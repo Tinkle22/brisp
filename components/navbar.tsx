@@ -7,6 +7,8 @@ import { GraduationCap, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
+import ServicesDropdown from '@/components/services-dropdown';
+import ApplyDropdown from '@/components/apply-dropdown';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,8 +18,8 @@ import {
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Apply', href: '/apply' },
-  { name: 'Other Services', href: '/other-services' },
+  { name: 'Apply', href: '#',  component: ApplyDropdown },
+  { name: 'Other Services', href: '#', component: ServicesDropdown },
   {
     name: 'Admissions',
     href: '#',
@@ -36,6 +38,7 @@ const navigation = [
   },
   { name: 'Campus', href: '/campus' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Graduants', href: '/graduants' },
 ];
 
 export default function Navbar() {
@@ -43,6 +46,11 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const renderNavItem = (item: any) => {
+    if (item.component) {
+      const Component = item.component;
+      return <Component />;
+    }
+
     if (item.dropdown) {
       return (
         <DropdownMenu>
@@ -91,13 +99,6 @@ export default function Navbar() {
         </div>
         <div className="flex lg:hidden items-center gap-4">
           <ThemeToggle />
-          <Button
-            variant="ghost"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <Menu className="h-6 w-6" aria-hidden="true" />
-          </Button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
@@ -108,9 +109,6 @@ export default function Navbar() {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
           <ThemeToggle />
-          <Button className="bg-emerald-600 hover:bg-emerald-700" asChild>
-            <Link href="/signup">Apply</Link>
-          </Button>
         </div>
       </nav>
       
@@ -177,13 +175,7 @@ export default function Navbar() {
                   <span className="text-sm font-medium">Theme</span>
                   <ThemeToggle />
                 </div>
-                <Link
-                  href="/signup"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 bg-emerald-600 hover:bg-emerald-700 text-white text-center"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Apply
-                </Link>
+                <ApplyDropdown />
               </div>
             </div>
           </div>
