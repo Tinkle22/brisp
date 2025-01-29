@@ -38,7 +38,7 @@ const navigation = [
   },
   { name: 'Campus', href: '/campus' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Graduants', href: '/graduants' },
+  { name: 'Graduates', href: '/graduates' },
 ];
 
 export default function Navbar() {
