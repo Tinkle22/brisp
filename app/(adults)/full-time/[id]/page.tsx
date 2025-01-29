@@ -44,6 +44,90 @@ export const courses = {
       { label: "Start Date", value: "Flexible", icon: "Calendar" }
     ]
   },
+  'application-development': {
+    title: "application Development",
+    subtitle: "Unlock The Power Of Artificial Intelligence And Become An AI Expert",
+    duration: "3 Months Program",
+    price: "K850/Pm",
+    image: "/ai-course.jpg",
+    description: "Our comprehensive AI program covers machine learning, deep learning, neural networks, and practical applications of AI in today's industry.",
+    highlights: [
+      "Hands-on experience with real-world AI projects",
+      "Industry-standard tools and frameworks",
+      "Personalized mentoring from AI experts",
+      "Career guidance and placement support"
+    ],
+    curriculum: [
+      {
+        week: "Week 1-2",
+        topics: ["Introduction to AI", "Python for AI", "Data Preprocessing"]
+      },
+      {
+        week: "Week 3-4",
+        topics: ["Machine Learning Fundamentals", "Supervised Learning", "Model Evaluation"]
+      },
+      {
+        week: "Week 5-6",
+        topics: ["Deep Learning", "Neural Networks", "Computer Vision"]
+      },
+      {
+        week: "Week 7-8",
+        topics: ["Natural Language Processing", "Reinforcement Learning", "AI Ethics"]
+      },
+      {
+        week: "Week 9-12",
+        topics: ["Capstone Project", "Industry Applications", "Portfolio Development"]
+      }
+    ],
+    stats: [
+      { label: "Hours per Week", value: "20", icon: "Clock" },
+      { label: "Class Size", value: "15 Students", icon: "Users" },
+      { label: "Projects", value: "8+", icon: "BookOpen" },
+      { label: "Start Date", value: "Flexible", icon: "Calendar" }
+    ]
+  },
+  'automation-and-robotics': {
+    title: "Automation and Robotics",
+    subtitle: "Unlock The Power Of Artificial Intelligence And Become An AI Expert",
+    duration: "3 Months Program",
+    price: "K850/Pm",
+    image: "/ai-course.jpg",
+    description: "Our comprehensive AI program covers machine learning, deep learning, neural networks, and practical applications of AI in today's industry.",
+    highlights: [
+      "Hands-on experience with real-world AI projects",
+      "Industry-standard tools and frameworks",
+      "Personalized mentoring from AI experts",
+      "Career guidance and placement support"
+    ],
+    curriculum: [
+      {
+        week: "Week 1-2",
+        topics: ["Introduction to AI", "Python for AI", "Data Preprocessing"]
+      },
+      {
+        week: "Week 3-4",
+        topics: ["Machine Learning Fundamentals", "Supervised Learning", "Model Evaluation"]
+      },
+      {
+        week: "Week 5-6",
+        topics: ["Deep Learning", "Neural Networks", "Computer Vision"]
+      },
+      {
+        week: "Week 7-8",
+        topics: ["Natural Language Processing", "Reinforcement Learning", "AI Ethics"]
+      },
+      {
+        week: "Week 9-12",
+        topics: ["Capstone Project", "Industry Applications", "Portfolio Development"]
+      }
+    ],
+    stats: [
+      { label: "Hours per Week", value: "20", icon: "Clock" },
+      { label: "Class Size", value: "15 Students", icon: "Users" },
+      { label: "Projects", value: "8+", icon: "BookOpen" },
+      { label: "Start Date", value: "Flexible", icon: "Calendar" }
+    ]
+  },
   'graphic-designing': {
     title: "graphic-designing",
     subtitle: "Master Modern Web Development and Build Real-World Applications",

@@ -34,20 +34,6 @@ const Fulltime = () => {
       duration: "3 Months Program",
       price: "K850/Pm",
       image: "/graphic-design.jpg"
-    },
-    {
-      title: "Cyber Security",
-      subtitle: "Become A Cybersecurity Expert And Protect Against Digital Threats",
-      duration: "3 Months Program",
-      price: "K850/Pm",
-      image: "/cyber-security.jpg"
-    },
-    {
-      title: "Computer Networking",
-      subtitle: "Learn The Fundamental Concepts And Principles Of Networking",
-      duration: "3 Months Program",
-      price: "K850/Pm",
-      image: "/networking.jpg"
     }
   ];
 
