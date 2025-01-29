@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import AccommodationCard from '@/components/accommodation-card';
 
-const Fulltime = () => {
+const OnlineKids = () => {
   const courses = [
     {
       title: "Artificial Intelligence",
@@ -43,7 +43,7 @@ const Fulltime = () => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
-            Full-Time Programs
+            Online Programs
           </h1>
           <p className="text-lg text-muted-foreground">
             Intensive professional courses designed to kickstart your career
@@ -115,4 +115,4 @@ const Fulltime = () => {
   );
 };
 
-export default Fulltime;
+export default OnlineKids;

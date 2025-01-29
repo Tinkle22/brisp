@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,9 +14,15 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { courses } from '@/lib/courses';
 
 const ApplicationForm = () => {
+  const searchParams = useSearchParams();
   const [studentType, setStudentType] = React.useState<'child' | 'adult'>('adult');
+  
+  // Get program from URL and find matching course
+  const programSlug = searchParams.get('program');
+  const selectedProgram = programSlug ? courses[programSlug as keyof typeof courses]?.title : null;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -163,15 +170,16 @@ const ApplicationForm = () => {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="program">Program</Label>
-                  <Select>
+                  <Select defaultValue={programSlug || undefined}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select program" />
+                      <SelectValue placeholder={selectedProgram || "Select program"} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="webDev">Web Development</SelectItem>
-                      <SelectItem value="mobileDev">Mobile Programming</SelectItem>
-                      <SelectItem value="dataScience">Data Science</SelectItem>
-                      <SelectItem value="cybersecurity">Cybersecurity</SelectItem>
+                      {Object.entries(courses).map(([slug, course]) => (
+                        <SelectItem key={slug} value={slug}>
+                          {course.title}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
