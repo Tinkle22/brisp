@@ -7,16 +7,16 @@ import { Card } from '@/components/ui/card';
 
 const programs = {
   ADULTS: [
-    { name: 'Full Time', href: '/apply/adults/full-time' },
-    { name: 'Online', href: '/apply/adults/online' },
-    { name: 'Distance', href: '/apply/adults/distance' },
-    { name: 'Part Time', href: '/apply/adults/part-time' },
+    { name: 'Full Time', href: '/full-time' },
+    { name: 'Online', href: '/online-adults' },
+    { name: 'Distance', href: '/distance' },
+    { name: 'Part Time', href: '/part-time' },
   ],
   KIDS: [
-    { name: 'Weekends Program', href: '/apply/kids/weekends' },
-    { name: 'Holiday Program', href: '/apply/kids/holiday' },
-    { name: 'Online Program', href: '/apply/kids/online' },
-    { name: 'Briisp Kids-Hub', href: '/apply/kids/hub' },
+    { name: 'Weekends Program', href: '/weekends' },
+    { name: 'Holiday Program', href: '/holiday' },
+    { name: 'Online Program', href: '/online-kids' },
+    { name: 'Briisp Kids-Hub', href: '/hub' },
   ],
 };
 

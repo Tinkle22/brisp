@@ -19,10 +19,10 @@ export default function NotFound() {
 
         {/* 404 Text */}
         <div className="space-y-4">
-          <h1 className="text-8xl font-bold text-emerald-600">404</h1>
+          <h1 className="text-8xl font-bold text-emerald-600">Stay Tuned</h1>
           <h2 className="text-3xl font-semibold">Page Coming Soon</h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            The page you're looking for doesn't exist or has been moved. 
+            The page you're looking for is in development. 
             Let's get you back on track!
           </p>
         </div>
