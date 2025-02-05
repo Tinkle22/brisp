@@ -168,3 +168,36 @@ export const courses = {
       ]
     }
   };
+
+export const kidsCourses = {
+  'robotics-automation': {
+    title: "Robotics & Automation",
+    subtitle: "Weekend Classes",
+    startDate: "Monday, Sep 2nd, 2023",
+    image: "/kids/robotics.jpg",
+    description: "Robotics for kids: Building and programming robots. Hands-on activities foster problem-solving, creativity, tech understanding. Design, control robots, prepare for future innovation!",
+    category: 'kids',
+    tags: ['Robotics', 'STEM'],
+    readMoreLink: '/courses/kids/robotics'
+  },
+  'space-science': {
+    title: "Space Science",
+    subtitle: "Weekend Classes",
+    startDate: "Monday, Sep 2nd, 2023",
+    image: "/kids/space-science.jpg",
+    description: "Space science for kids: Explore the wonders of the universe! Engaging activities ignite curiosity, inspire discovery, and foster a passion for space exploration.",
+    category: 'kids',
+    tags: ['SpaceScience', 'STEM'],
+    readMoreLink: '/courses/kids/space-science'
+  },
+  'coding': {
+    title: "Coding",
+    subtitle: "Weekend Classes",
+    startDate: "Monday, Sep 2nd, 2023",
+    image: "/kids/coding.jpg",
+    description: "Coding for kids: Unlock the world of mobile app and web development! Learn essential coding skills, create interactive websites, design engaging mobile applications. Empower creativity and problem-solving abilities!",
+    category: 'kids',
+    tags: ['Coding', 'STEM'],
+    readMoreLink: '/courses/kids/coding'
+  }
+};

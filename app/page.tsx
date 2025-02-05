@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import ProgramsShowcase from "@/components/programs-showcase";
 import NoticeBoard from "@/components/notice-board";
+import KidsPrograms from "@/components/kids-programs";
 
 export default function Home() {
   return (
@@ -25,14 +26,14 @@ export default function Home() {
             loop
             muted
             playsInline
-            className="object-cover w-full h-full opacity-100"
+            className="object-cover w-full h-full "
           >
             <source
               src="https://videos.pexels.com/video-files/9373137/9373137-hd_1920_1080_25fps.mp4"
               type="video/mp4"
             />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background"></div>
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
@@ -184,9 +185,7 @@ export default function Home() {
             </div>
             <div className="space-y-2 text-sm">
               <p className="font-medium">Main Campus</p>
-              <p className="text-muted-foreground">
-                Meanwood Ndeke Phase 2 
-              </p>
+              <p className="text-muted-foreground">Meanwood Ndeke Phase 2</p>
               <p className="text-muted-foreground">Plot 2436 Lusaka</p>
               <p className="text-emerald-600">+260 953500666</p>
               <p className="text-emerald-600">
@@ -196,6 +195,9 @@ export default function Home() {
           </Card>
         </div>
       </div>
+
+      {/* Kids Programs Section */}
+      <KidsPrograms />
 
       {/* CTA Section */}
       <section className="relative isolate py-20 sm:py-32 bg-muted mt-auto">
