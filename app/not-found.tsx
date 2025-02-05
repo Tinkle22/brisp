@@ -43,7 +43,7 @@ export default function NotFound() {
             className="w-full bg-emerald-600 hover:bg-emerald-700 flex items-center gap-2"
             asChild
           >
-            <Link href="/contact">
+            <Link href="/courses">
               <Search className="h-4 w-4" />
               Search Courses
             </Link>

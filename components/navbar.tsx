@@ -112,7 +112,6 @@ export default function Navbar() {
         </div>
       </nav>
       
-      {/* Mobile menu */}
       <div className={cn(
         'lg:hidden',
         mobileMenuOpen ? 'fixed inset-0 z-50' : 'hidden'

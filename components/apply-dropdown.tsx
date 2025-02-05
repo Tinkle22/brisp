@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/card';
 const programs = {
   ADULTS: [
     { name: 'Full Time', href: '/full-time' },
-    { name: 'Online', href: '/online-adults' },
+    { name: 'Online', href: '/online' },
     { name: 'Distance', href: '/distance' },
     { name: 'Part Time', href: '/part-time' },
   ],

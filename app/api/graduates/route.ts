@@ -1,0 +1,119 @@
+import { NextResponse } from 'next/server';
+import pool from '@/lib/db';
+import { Graduate, Project, SocialLink } from '@/lib/types';
+import { uploadToCloudinary } from '@/lib/cloudinary';
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const courseId = searchParams.get('courseId');
+    const year = searchParams.get('year');
+
+    let query = `
+      SELECT 
+        g.*,
+        GROUP_CONCAT(DISTINCT p.project_id) as project_ids,
+        GROUP_CONCAT(DISTINCT sl.link_id) as social_link_ids
+      FROM graduates g
+      LEFT JOIN projects p ON g.graduate_id = p.graduate_id
+      LEFT JOIN social_links sl ON g.graduate_id = sl.graduate_id
+    `;
+
+    const params: any[] = [];
+    const conditions: string[] = [];
+
+    if (courseId) {
+      conditions.push('g.course_id = ?');
+      params.push(courseId);
+    }
+
+    if (year) {
+      conditions.push('g.year_of_completion = ?');
+      params.push(year);
+    }
+
+    if (conditions.length > 0) {
+      query += ` WHERE ${conditions.join(' AND ')}`;
+    }
+
+    query += ' GROUP BY g.graduate_id';
+
+    const [graduates] = await pool.query(query, params);
+    
+    // Fetch related data for each graduate
+    const graduatesWithDetails = await Promise.all((graduates as any[]).map(async (graduate) => {
+      const [projects] = await pool.query('SELECT * FROM projects WHERE graduate_id = ?', [graduate.graduate_id]);
+      const [socialLinks] = await pool.query('SELECT * FROM social_links WHERE graduate_id = ?', [graduate.graduate_id]);
+      
+      return {
+        ...graduate,
+        projects,
+        social_links: socialLinks
+      };
+    }));
+
+    return NextResponse.json(graduatesWithDetails);
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  const connection = await pool.getConnection();
+  await connection.beginTransaction();
+
+  try {
+    const formData = await request.formData();
+    
+    // Handle certificate file upload
+    let certificateFileUrl = '';
+    const certificateFile = formData.get('certificate_file') as File;
+    if (certificateFile) {
+      certificateFileUrl = await uploadToCloudinary(certificateFile, 'certificates');
+    }
+
+    // Parse graduate data
+    const graduateData = JSON.parse(formData.get('graduateData') as string);
+    const projectsData = JSON.parse(formData.get('projects') as string);
+    const socialLinksData = JSON.parse(formData.get('social_links') as string);
+
+    // Insert graduate
+    const [graduateResult] = await connection.query(
+      'INSERT INTO graduates SET ?',
+      {
+        ...graduateData,
+        certificate_file_url: certificateFileUrl
+      }
+    );
+    const graduateId = (graduateResult as any).insertId;
+
+    // Insert projects
+    for (const project of projectsData) {
+      await connection.query(
+        'INSERT INTO projects SET ?',
+        { ...project, graduate_id: graduateId }
+      );
+    }
+
+    // Insert social links
+    for (const link of socialLinksData) {
+      await connection.query(
+        'INSERT INTO social_links SET ?',
+        { ...link, graduate_id: graduateId }
+      );
+    }
+
+    await connection.commit();
+    return NextResponse.json({ id: graduateId }, { status: 201 });
+  } catch (error) {
+    await connection.rollback();
+    console.error('Error in POST /api/graduates:', error);
+    return NextResponse.json(
+      { error: 'Internal Server Error', details: error.message },
+      { status: 500 }
+    );
+  } finally {
+    connection.release();
+  }
+}

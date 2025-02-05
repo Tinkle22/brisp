@@ -112,7 +112,7 @@ export default function ProgramsShowcase() {
                   key={index}
                   className={`p-4 flex items-center gap-3 cursor-pointer hover:shadow-md transition-shadow ${
                     index === adultCourses.length - 1 ? 'col-span-2' : ''
-                  }`}
+                  } hover-card-animation`}
                 >
                   <div className={`p-2 rounded-lg ${course.color}`}>
                     <course.icon className="h-5 w-5 text-white" />

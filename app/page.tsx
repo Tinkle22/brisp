@@ -3,26 +3,52 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { BookOpen, Users, Trophy, ArrowRight, Download, MapPin, Bell } from 'lucide-react';
 import ProgramsShowcase from '@/components/programs-showcase';
+import NoticeBoard from '@/components/notice-board';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 sm:py-32 bg-background border-b">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+      <section className="relative py-20 sm:py-32 overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="object-cover w-full h-full opacity-100"
+          >
+            <source src="https://videos.pexels.com/video-files/9373137/9373137-hd_1920_1080_25fps.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background"></div>
+        </div>
+        
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <div 
+            className="mx-auto max-w-2xl text-center animate-fade-in"
+          >
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl animate-slide-up">
               Transform Your Future with Professional Education
             </h1>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            <p className="mt-6 text-lg leading-8 text-muted-foreground animate-slide-up-delay">
               Join our academy to gain the skills and knowledge needed to excel in your career. 
               Learn from industry experts and get certified in your field of interest.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700" asChild>
+            <div className="mt-10 flex items-center justify-center gap-x-6 animate-slide-up-delay-2">
+              <Button 
+                size="lg" 
+                className="bg-emerald-600 hover:bg-emerald-700 transition-all duration-300 hover:scale-105" 
+                asChild
+              >
                 <Link href="/courses">Explore Courses</Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="transition-all duration-300 hover:scale-105" 
+                asChild
+              >
                 <Link href="/about">Learn More</Link>
               </Button>
             </div>
@@ -65,7 +91,10 @@ export default function Home() {
                     icon: Trophy,
                   },
                 ].map((feature) => (
-                  <Card key={feature.name} className="relative overflow-hidden rounded-lg p-8">
+                  <Card 
+                    key={feature.name} 
+                    className="relative overflow-hidden rounded-lg p-8 hover-card-animation"
+                  >
                     <div>
                       <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-600">
                         <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
@@ -92,32 +121,7 @@ export default function Home() {
               <Bell className="h-5 w-5 text-emerald-600" />
               <h2 className="text-xl font-semibold">Notice Board</h2>
             </div>
-            <div className="space-y-4">
-              {[
-                {
-                  date: '2024-03-15',
-                  title: 'Attention parents! 📢',
-                  content: 'Registration for new academic year starts from August 1st. Early bird discount available.',
-                },
-                {
-                  date: '2024-03-10',
-                  title: 'Exciting news for adult learners in 2024!',
-                  content: 'New evening classes starting from next month. Limited seats available.',
-                },
-              ].map((notice, index) => (
-                <div key={index} className="border-b pb-4 last:border-b-0 last:pb-0">
-                  <time className="text-sm text-emerald-600 font-medium">
-                    {new Date(notice.date).toLocaleDateString('en-US', {
-                      month: 'long',
-                      day: 'numeric',
-                      year: 'numeric',
-                    })}
-                  </time>
-                  <h3 className="font-medium mt-1">{notice.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{notice.content}</p>
-                </div>
-              ))}
-            </div>
+              <NoticeBoard/>
           </Card>
 
           {/* Downloads */}
@@ -135,7 +139,7 @@ export default function Home() {
                 <Button
                   key={index}
                   variant="outline"
-                  className="w-full justify-between text-left font-normal"
+                  className="w-full justify-between text-left font-normal transition-all duration-300 hover:bg-emerald-50"
                 >
                   <span>{file.name}</span>
                   <span className="text-sm text-muted-foreground">{file.size}</span>
