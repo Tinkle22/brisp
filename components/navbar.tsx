@@ -96,7 +96,7 @@ export default function Navbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link href="/" className="p-1.5 flex items-center space-x-2">
+          <Link href="/" className=" flex items-center ">
             <Image
               className="flex items-center"
               src="/logo.png"
