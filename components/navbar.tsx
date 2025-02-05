@@ -1,44 +1,45 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { GraduationCap, Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { ThemeToggle } from '@/components/theme-toggle';
-import ServicesDropdown from '@/components/services-dropdown';
-import ApplyDropdown from '@/components/apply-dropdown';
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { GraduationCap, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
+import ServicesDropdown from "@/components/services-dropdown";
+import ApplyDropdown from "@/components/apply-dropdown";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Image from "next/image";
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Apply', href: '#',  component: ApplyDropdown },
-  { name: 'Other Services', href: '#', component: ServicesDropdown },
+  { name: "Home", href: "/" },
+  { name: "Apply", href: "#", component: ApplyDropdown },
+  { name: "Other Services", href: "#", component: ServicesDropdown },
   {
-    name: 'Admissions',
-    href: '#',
+    name: "Admissions",
+    href: "#",
     dropdown: [
-      { name: 'Adults', href: '/admissions/adults' },
-      { name: 'Kids', href: '/admissions/kids' },
+      { name: "Adults", href: "/admissions/adults" },
+      { name: "Kids", href: "/admissions/kids" },
     ],
   },
   {
-    name: 'Depts',
-    href: '#',
+    name: "Depts",
+    href: "#",
     dropdown: [
-      { name: 'Computer Science', href: '/depts/computer-science' },
-      { name: 'Auto Engineering', href: '/depts/auto-engineering' },
+      { name: "Computer Science", href: "/depts/computer-science" },
+      { name: "Auto Engineering", href: "/depts/auto-engineering" },
     ],
   },
-  { name: 'Campus', href: '/campus' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Graduates', href: '/graduates' },
+  { name: "Campus", href: "/campus" },
+  { name: "Contact", href: "/contact" },
+  { name: "Graduates", href: "/graduates" },
 ];
 
 export default function Navbar() {
@@ -77,10 +78,10 @@ export default function Navbar() {
       <Link
         href={item.href}
         className={cn(
-          'text-sm font-semibold leading-6',
+          "text-sm font-semibold leading-6",
           pathname === item.href
-            ? 'text-emerald-600'
-            : 'text-muted-foreground hover:text-emerald-600'
+            ? "text-emerald-600"
+            : "text-muted-foreground hover:text-emerald-600"
         )}
       >
         {item.name}
@@ -90,44 +91,66 @@ export default function Navbar() {
 
   return (
     <header className="bg-background border-b">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        aria-label="Global"
+      >
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
-            <GraduationCap className="h-8 w-8 text-emerald-600" />
-            <span className="font-semibold text-xl">Academy</span>
+          <Link href="/" className="p-1.5 flex items-center space-x-2">
+            <Image
+              className="flex items-center"
+              src="/logo.png"
+              height={180}
+              width={180}
+              alt="logo"
+            />
           </Link>
         </div>
         <div className="flex lg:hidden items-center gap-4">
           <ThemeToggle />
+          <Button
+            variant="ghost"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <span className="sr-only">Open main menu</span>
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          </Button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <div key={item.name}>
-              {renderNavItem(item)}
-            </div>
+            <div key={item.name}>{renderNavItem(item)}</div>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
           <ThemeToggle />
         </div>
       </nav>
-      
-      <div className={cn(
-        'lg:hidden',
-        mobileMenuOpen ? 'fixed inset-0 z-50' : 'hidden'
-      )}>
+
+      <div
+        className={cn(
+          "lg:hidden",
+          mobileMenuOpen ? "fixed inset-0 z-50" : "hidden"
+        )}
+      >
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" />
         <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
-              <GraduationCap className="h-8 w-8 text-emerald-600" />
-              <span className="font-semibold text-xl">Academy</span>
+              <Image
+                className="flex items-center"
+                src="/logo.png"
+                height={100}
+                width={100}
+                alt="logo"
+              />
             </Link>
             <Button
               variant="ghost"
               className="-m-2.5 rounded-md p-2.5"
               onClick={() => setMobileMenuOpen(false)}
             >
+              <span className="sr-only">Close menu</span>
               <X className="h-6 w-6" aria-hidden="true" />
             </Button>
           </div>
@@ -152,14 +175,18 @@ export default function Navbar() {
                           </Link>
                         ))}
                       </>
+                    ) : item.component ? (
+                      <div onClick={() => setMobileMenuOpen(false)}>
+                        {renderNavItem(item)}
+                      </div>
                     ) : (
                       <Link
                         href={item.href}
                         className={cn(
-                          '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7',
+                          "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7",
                           pathname === item.href
-                            ? 'text-emerald-600'
-                            : 'text-muted-foreground hover:text-emerald-600'
+                            ? "text-emerald-600"
+                            : "text-muted-foreground hover:text-emerald-600"
                         )}
                         onClick={() => setMobileMenuOpen(false)}
                       >
@@ -174,7 +201,6 @@ export default function Navbar() {
                   <span className="text-sm font-medium">Theme</span>
                   <ThemeToggle />
                 </div>
-                <ApplyDropdown />
               </div>
             </div>
           </div>

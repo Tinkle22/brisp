@@ -32,8 +32,8 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
           />
           <div className="absolute inset-0 bg-black/50 flex items-center">
             <div className="max-w-3xl mx-auto px-6 text-center text-white">
-              <h1 className="text-4xl font-bold mb-4">{course.title}</h1>
-              <p className="text-lg opacity-90">{course.subtitle}</p>
+              {/* <h1 className="text-4xl font-bold mb-4">{course.title}</h1>
+              <p className="text-lg opacity-90">{course.subtitle}</p> */}
             </div>
           </div>
         </div>

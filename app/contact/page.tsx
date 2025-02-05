@@ -19,17 +19,17 @@ export default function ContactPage() {
           {[
             {
               title: 'Email',
-              value: 'contact@academy.edu',
+              value: 'briispacademyacademy111@gmail.com',
               icon: Mail,
             },
             {
               title: 'Phone',
-              value: '+1 (555) 123-4567',
+              value: '+260 953500666',
               icon: Phone,
             },
             {
               title: 'Location',
-              value: '123 Education St, NY 10001',
+              value: 'Meanwood Ndeke Phase 2',
               icon: MapPin,
             },
             {

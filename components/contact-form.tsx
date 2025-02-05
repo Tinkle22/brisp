@@ -4,30 +4,70 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-// import { useToast } from '@/components/ui/use-toast';
+import { useToast } from "@/hooks/use-toast";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import * as z from 'zod';
+
+// Define the form validation schema
+const formSchema = z.object({
+  firstName: z.string().min(2, 'First name must be at least 2 characters'),
+  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  subject: z.string().min(5, 'Subject must be at least 5 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // const { toast } = useToast();
+  const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
 
-    // toast({
-    //   title: 'Message sent!',
-    //   description: 'We\'ll get back to you as soon as possible.',
-    // });
+      toast({
+        title: 'Message sent!',
+        description: 'We\'ll get back to you as soon as possible.',
+      });
 
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+      // Reset the form
+      reset();
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to send message. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="firstName" className="block text-sm font-medium mb-2">
@@ -35,10 +75,15 @@ export default function ContactForm() {
           </label>
           <Input
             id="firstName"
-            name="firstName"
-            required
+            {...register('firstName')}
             placeholder="John"
+            className={errors.firstName ? 'border-red-500' : ''}
           />
+          {errors.firstName && (
+            <p className="mt-1 text-sm text-red-500">
+              {errors.firstName.message}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="lastName" className="block text-sm font-medium mb-2">
@@ -46,10 +91,15 @@ export default function ContactForm() {
           </label>
           <Input
             id="lastName"
-            name="lastName"
-            required
+            {...register('lastName')}
             placeholder="Doe"
+            className={errors.lastName ? 'border-red-500' : ''}
           />
+          {errors.lastName && (
+            <p className="mt-1 text-sm text-red-500">
+              {errors.lastName.message}
+            </p>
+          )}
         </div>
       </div>
       <div>
@@ -58,11 +108,16 @@ export default function ContactForm() {
         </label>
         <Input
           id="email"
-          name="email"
           type="email"
-          required
+          {...register('email')}
           placeholder="john@example.com"
+          className={errors.email ? 'border-red-500' : ''}
         />
+        {errors.email && (
+          <p className="mt-1 text-sm text-red-500">
+            {errors.email.message}
+          </p>
+        )}
       </div>
       <div>
         <label htmlFor="subject" className="block text-sm font-medium mb-2">
@@ -70,10 +125,15 @@ export default function ContactForm() {
         </label>
         <Input
           id="subject"
-          name="subject"
-          required
+          {...register('subject')}
           placeholder="How can we help you?"
+          className={errors.subject ? 'border-red-500' : ''}
         />
+        {errors.subject && (
+          <p className="mt-1 text-sm text-red-500">
+            {errors.subject.message}
+          </p>
+        )}
       </div>
       <div>
         <label htmlFor="message" className="block text-sm font-medium mb-2">
@@ -81,11 +141,16 @@ export default function ContactForm() {
         </label>
         <Textarea
           id="message"
-          name="message"
-          required
+          {...register('message')}
           placeholder="Your message..."
           rows={5}
+          className={errors.message ? 'border-red-500' : ''}
         />
+        {errors.message && (
+          <p className="mt-1 text-sm text-red-500">
+            {errors.message.message}
+          </p>
+        )}
       </div>
       <Button
         type="submit"

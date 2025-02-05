@@ -1,19 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { ArrowRight, Clock } from 'lucide-react';
-import AccommodationCard from '@/components/accommodation-card';
-import { truncateText } from '@/utils/truncate';
+import React, { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, Clock } from "lucide-react";
+import AccommodationCard from "@/components/accommodation-card";
+import { truncateText } from "@/utils/truncate";
 
-const FullTimeCourses = () => {
+const OnlineCourses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const response = await fetch('/api/courses/fulltime?program_type=fulltime');
+      const response = await fetch(
+        "/api/courses/online-adults?program_type=adults-online"
+      );
       const data = await response.json();
       setCourses(data);
     };
@@ -27,7 +29,7 @@ const FullTimeCourses = () => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
-            Full-Time Programs
+            Online Programs
           </h1>
           <p className="text-lg text-muted-foreground">
             Intensive professional courses designed to kickstart your career
@@ -39,7 +41,10 @@ const FullTimeCourses = () => {
           <div className="lg:flex-1">
             <div className="grid md:grid-cols-2 gap-6">
               {courses.map((course) => (
-                <Card key={course.course_id} className="overflow-hidden flex flex-col">
+                <Card
+                  key={course.course_id}
+                  className="overflow-hidden flex flex-col"
+                >
                   <div className="relative h-48">
                     <img
                       src={course.image_url}
@@ -52,17 +57,25 @@ const FullTimeCourses = () => {
                       <Clock className="h-4 w-4" />
                       <span>{course.duration_months} months</span>
                     </div>
-                    <h2 className="text-xl font-semibold mb-2">{course.title}</h2>
-                    <p className="text-muted-foreground mb-4 flex-1">
+                    <h2 className="text-xl font-semibold mb-2">
+                      {course.title}
+                    </h2>
+                    {/* <p className="text-muted-foreground mb-4 flex-1">
                       {truncateText(course.description, 30)}
-                    </p>
+                    </p> */}
+                    <div
+                      className="text-muted-foreground"
+                      dangerouslySetInnerHTML={{
+                        __html: truncateText(course.description, 30),
+                      }}
+                    />
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-lg font-bold text-emerald-600">
                         K {course.price}
                       </span>
                     </div>
                     <div className="flex gap-3">
-                      <Button 
+                      <Button
                         className="flex-1 bg-emerald-600 hover:bg-emerald-700 group"
                         asChild
                       >
@@ -71,12 +84,8 @@ const FullTimeCourses = () => {
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </Button>
-                      <Button 
-                        variant="outline" 
-                        className="flex-1"
-                        asChild
-                      >
-                        <Link href={`/full-time/${course.course_id}`}>
+                      <Button variant="outline" className="flex-1" asChild>
+                        <Link href={`/online/${course.course_id}`}>
                           View More
                         </Link>
                       </Button>
@@ -99,4 +108,4 @@ const FullTimeCourses = () => {
   );
 };
 
-export default FullTimeCourses;
+export default OnlineCourses;

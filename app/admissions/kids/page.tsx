@@ -46,7 +46,7 @@ export default function KidsAdmissionsPage() {
       <div className="bg-emerald-600 text-white">
         <div className="max-w-7xl mx-auto px-6 py-3 text-center">
           <p className="text-sm sm:text-base font-medium">
-            🎉 Early Bird Registration Now Open for 2024! Limited Spots Available
+            🎉 Early Bird Registration Now Open for {new Date().getFullYear()}! Limited Spots Available
           </p>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function KidsAdmissionsPage() {
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center text-white px-6">
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Kids Program 2024
+              Kids Program {new Date().getFullYear()}
             </h1>
             <p className="text-lg sm:text-xl max-w-2xl mx-auto">
               Nurturing young minds through innovative STEM education

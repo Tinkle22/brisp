@@ -1,9 +1,17 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { BookOpen, Users, Trophy, ArrowRight, Download, MapPin, Bell } from 'lucide-react';
-import ProgramsShowcase from '@/components/programs-showcase';
-import NoticeBoard from '@/components/notice-board';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  BookOpen,
+  Users,
+  Trophy,
+  ArrowRight,
+  Download,
+  MapPin,
+  Bell,
+} from "lucide-react";
+import ProgramsShowcase from "@/components/programs-showcase";
+import NoticeBoard from "@/components/notice-board";
 
 export default function Home() {
   return (
@@ -19,38 +27,40 @@ export default function Home() {
             playsInline
             className="object-cover w-full h-full opacity-100"
           >
-            <source src="https://videos.pexels.com/video-files/9373137/9373137-hd_1920_1080_25fps.mp4" type="video/mp4" />
+            <source
+              src="https://videos.pexels.com/video-files/9373137/9373137-hd_1920_1080_25fps.mp4"
+              type="video/mp4"
+            />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background"></div>
         </div>
-        
+
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <div 
-            className="mx-auto max-w-2xl text-center animate-fade-in"
-          >
+          <div className="mx-auto max-w-2xl text-center animate-fade-in">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl animate-slide-up">
               Transform Your Future with Professional Education
             </h1>
             <p className="mt-6 text-lg leading-8 text-muted-foreground animate-slide-up-delay">
-              Join our academy to gain the skills and knowledge needed to excel in your career. 
-              Learn from industry experts and get certified in your field of interest.
+              Join our academy to gain the skills and knowledge needed to excel
+              in your career. Learn from industry experts and get certified in
+              your field of interest.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 animate-slide-up-delay-2">
-              <Button 
-                size="lg" 
-                className="bg-emerald-600 hover:bg-emerald-700 transition-all duration-300 hover:scale-105" 
+              <Button
+                size="lg"
+                className="bg-emerald-600 hover:bg-emerald-700 transition-all duration-300 hover:scale-105"
                 asChild
               >
                 <Link href="/courses">Explore Courses</Link>
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="transition-all duration-300 hover:scale-105" 
+              {/* <Button
+                variant="outline"
+                size="lg"
+                className="transition-all duration-300 hover:scale-105"
                 asChild
               >
                 <Link href="/about">Learn More</Link>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -69,38 +79,47 @@ export default function Home() {
                 Why Choose Our Academy?
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                We provide comprehensive education solutions designed to help you succeed in today's competitive world.
+                We provide comprehensive education solutions designed to help
+                you succeed in today's competitive world.
               </p>
             </div>
             <div className="mx-auto mt-16">
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
                 {[
                   {
-                    name: 'Expert-Led Courses',
-                    description: 'Learn from industry professionals with years of experience in their respective fields.',
+                    name: "Expert-Led Courses",
+                    description:
+                      "Learn from industry professionals with years of experience in their respective fields.",
                     icon: BookOpen,
                   },
                   {
-                    name: 'Interactive Learning',
-                    description: 'Engage with fellow students and instructors through our collaborative learning platform.',
+                    name: "Interactive Learning",
+                    description:
+                      "Engage with fellow students and instructors through our collaborative learning platform.",
                     icon: Users,
                   },
                   {
-                    name: 'Recognized Certification',
-                    description: 'Earn industry-recognized certificates upon successful completion of your courses.',
+                    name: "Recognized Certification",
+                    description:
+                      "Earn industry-recognized certificates upon successful completion of your courses.",
                     icon: Trophy,
                   },
                 ].map((feature) => (
-                  <Card 
-                    key={feature.name} 
+                  <Card
+                    key={feature.name}
                     className="relative overflow-hidden rounded-lg p-8 hover-card-animation"
                   >
                     <div>
                       <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-600">
-                        <feature.icon className="h-6 w-6 text-white" aria-hidden="true" />
+                        <feature.icon
+                          className="h-6 w-6 text-white"
+                          aria-hidden="true"
+                        />
                       </div>
                       <div className="mt-6">
-                        <h3 className="text-lg font-semibold leading-8">{feature.name}</h3>
+                        <h3 className="text-lg font-semibold leading-8">
+                          {feature.name}
+                        </h3>
                         <p className="mt-2 text-base leading-7 text-muted-foreground">
                           {feature.description}
                         </p>
@@ -121,7 +140,7 @@ export default function Home() {
               <Bell className="h-5 w-5 text-emerald-600" />
               <h2 className="text-xl font-semibold">Notice Board</h2>
             </div>
-              <NoticeBoard/>
+            <NoticeBoard />
           </Card>
 
           {/* Downloads */}
@@ -132,9 +151,9 @@ export default function Home() {
             </div>
             <div className="space-y-3">
               {[
-                { name: 'Academy Brochure 2024', size: '2.5 MB' },
-                { name: 'Course Catalog', size: '1.8 MB' },
-                { name: 'Fee Structure', size: '500 KB' },
+                { name: "Academy Brochure 2024", size: "2.5 MB" },
+                { name: "Course Catalog", size: "1.8 MB" },
+                { name: "Fee Structure", size: "500 KB" },
               ].map((file, index) => (
                 <Button
                   key={index}
@@ -142,7 +161,9 @@ export default function Home() {
                   className="w-full justify-between text-left font-normal transition-all duration-300 hover:bg-emerald-50"
                 >
                   <span>{file.name}</span>
-                  <span className="text-sm text-muted-foreground">{file.size}</span>
+                  <span className="text-sm text-muted-foreground">
+                    {file.size}
+                  </span>
                 </Button>
               ))}
             </div>
@@ -156,17 +177,21 @@ export default function Home() {
             </div>
             <div className="aspect-video relative mb-4 rounded-lg overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1186&q=80"
+                src="img-01.jpg"
                 alt="Campus"
                 className="object-cover w-full h-full"
               />
             </div>
             <div className="space-y-2 text-sm">
               <p className="font-medium">Main Campus</p>
-              <p className="text-muted-foreground">123 Education Street</p>
-              <p className="text-muted-foreground">New York, NY 10001</p>
-              <p className="text-emerald-600">+1 (555) 123-4567</p>
-              <p className="text-emerald-600">info@academy.edu</p>
+              <p className="text-muted-foreground">
+                Meanwood Ndeke Phase 2 
+              </p>
+              <p className="text-muted-foreground">Plot 2436 Lusaka</p>
+              <p className="text-emerald-600">+260 953500666</p>
+              <p className="text-emerald-600">
+                briispacademyacademy111@gmail.com
+              </p>
             </div>
           </Card>
         </div>
@@ -180,10 +205,15 @@ export default function Home() {
               Ready to Start Your Learning Journey?
             </h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              Join thousands of students who have already transformed their careers through our academy.
+              Join thousands of students who have already transformed their
+              careers through our academy.
             </p>
             <div className="mt-10 flex items-center justify-center">
-              <Button className="bg-emerald-600 hover:bg-emerald-700 group" size="lg" asChild>
+              <Button
+                className="bg-emerald-600 hover:bg-emerald-700 group"
+                size="lg"
+                asChild
+              >
                 <Link href="/signup">
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

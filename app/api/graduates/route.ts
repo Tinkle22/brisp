@@ -36,7 +36,7 @@ export async function GET(request: Request) {
       query += ` WHERE ${conditions.join(' AND ')}`;
     }
 
-    query += ' GROUP BY g.graduate_id';
+    query += ' GROUP BY g.graduate_id ORDER BY g.final_score DESC';
 
     const [graduates] = await pool.query(query, params);
     
@@ -65,25 +65,33 @@ export async function POST(request: Request) {
 
   try {
     const formData = await request.formData();
-    
-    // Handle certificate file upload
+
+    // Upload certificate file (if provided)
     let certificateFileUrl = '';
     const certificateFile = formData.get('certificate_file') as File;
     if (certificateFile) {
       certificateFileUrl = await uploadToCloudinary(certificateFile, 'certificates');
     }
 
-    // Parse graduate data
+    // Upload graduate image file (if provided)
+    let graduateImageUrl = '';
+    const graduateImage = formData.get('graduate_image') as File;
+    if (graduateImage) {
+      graduateImageUrl = await uploadToCloudinary(graduateImage, 'graduates');
+    }
+
+    // Parse JSON strings stored in formData
     const graduateData = JSON.parse(formData.get('graduateData') as string);
     const projectsData = JSON.parse(formData.get('projects') as string);
     const socialLinksData = JSON.parse(formData.get('social_links') as string);
 
-    // Insert graduate
+    // Insert graduate, now including the graduate image URL
     const [graduateResult] = await connection.query(
       'INSERT INTO graduates SET ?',
       {
         ...graduateData,
-        certificate_file_url: certificateFileUrl
+        certificate_file_url: certificateFileUrl,
+        graduate_image_url: graduateImageUrl,
       }
     );
     const graduateId = (graduateResult as any).insertId;
@@ -108,11 +116,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ id: graduateId }, { status: 201 });
   } catch (error) {
     await connection.rollback();
-    console.error('Error in POST /api/graduates:', error);
-    return NextResponse.json(
-      { error: 'Internal Server Error', details: error.message },
-      { status: 500 }
-    );
+    console.error('Error submitting graduate:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   } finally {
     connection.release();
   }

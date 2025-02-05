@@ -10,7 +10,7 @@ export default function CampusPage() {
       <div className="bg-emerald-600 text-white">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <p className="text-sm sm:text-base font-medium">
-            🎓 Admissions are now open for 2024! Early bird discounts available.
+            🎓 Admissions are now open for {new Date().getFullYear()}! Early bird discounts available.
           </p>
           <Button asChild variant="secondary" size="sm" className="hidden sm:inline-flex">
             <Link href="/apply">Apply Now</Link>
@@ -21,7 +21,7 @@ export default function CampusPage() {
       {/* Hero Section */}
       <div className="relative h-[300px] sm:h-[400px]">
         <img
-          src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2186&q=80"
+          src="img-01.jpg"
           alt="Campus"
           className="w-full h-full object-cover"
         />
@@ -94,9 +94,9 @@ export default function CampusPage() {
           <h2 className="text-2xl font-bold mb-6">Campus Gallery</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-              "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-              "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+              "img-01.jpg",
+              "img-02.jpg",
+              "event3.jpg",
             ].map((src, index) => (
               <div key={index} className="aspect-video rounded-lg overflow-hidden">
                 <img

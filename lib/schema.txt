@@ -92,6 +92,7 @@ CREATE TABLE graduates (
     cell_number VARCHAR(20),
     year_of_completion YEAR NOT NULL,
     period_of_study VARCHAR(50) NOT NULL,
+    graduate_image_url VARCHAR(205) NOT NULL,
     final_score DECIMAL(5,2),
     certificate_number VARCHAR(50) UNIQUE NOT NULL,
     certificate_file_url VARCHAR(191),

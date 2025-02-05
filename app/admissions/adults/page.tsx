@@ -69,7 +69,7 @@ export default function AdultsAdmissionsPage() {
       <div className="bg-emerald-600 text-white">
         <div className="max-w-7xl mx-auto px-6 py-3 text-center">
           <p className="text-sm sm:text-base font-medium">
-            🎓 Professional Certification Programs - Enrollment Open for 2024 Batch
+            🎓 Professional Certification Programs - Enrollment Open for {new Date().getFullYear()} Batch
           </p>
         </div>
       </div>
@@ -167,9 +167,9 @@ export default function AdultsAdmissionsPage() {
                         </ul>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
-                        <Button variant="outline" asChild>
+                        {/* <Button variant="outline" asChild>
                           <Link href={`/programs/${program.id}`}>Learn More</Link>
-                        </Button>
+                        </Button> */}
                         <Button className="bg-emerald-600 hover:bg-emerald-700" asChild>
                           <Link href="/apply">Apply Now</Link>
                         </Button>
@@ -199,11 +199,6 @@ export default function AdultsAdmissionsPage() {
               },
               {
                 step: '03',
-                title: 'Assessment',
-                description: 'Complete a basic assessment for program placement.',
-              },
-              {
-                step: '04',
                 title: 'Enrollment',
                 description: 'Complete registration and begin your learning journey.',
               },

@@ -16,13 +16,13 @@ import Link from 'next/link';
 
 const techSpaceImages = [
   {
-    main: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    main: "event2.jpg",
     thumbnails: [
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      "https://images.unsplash.com/photo-1581092787765-e31c50b768fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      "https://images.unsplash.com/photo-1581092868681-44b56dfb5c2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
-      "https://images.unsplash.com/photo-1581092871034-5fdbd5bbf3f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+      "event2.jpg",
+      "event1.jpg",
+      "event3.jpg",
+      "event4.jpg",
+      "event5.jpg"
     ]
   }
 ];

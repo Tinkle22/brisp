@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { ArrowRight, Clock, Search, SlidersHorizontal } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, Clock, Search, SlidersHorizontal } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -17,7 +17,7 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { truncateText } from '@/utils/truncate';
+import { truncateText } from "@/utils/truncate";
 
 interface Course {
   course_id: number;
@@ -26,11 +26,11 @@ interface Course {
   duration_months: number;
   price: number;
   department: string;
-  category: 'adults' | 'kids';
+  category: "adults" | "kids";
   image_url: string;
   program_type: string;
   num_lectures: number;
-  skill_level: 'beginner' | 'intermediate' | 'advanced';
+  skill_level: "beginner" | "intermediate" | "advanced";
   languages: string;
   class_days: string;
   course_code: string;
@@ -40,13 +40,13 @@ const CoursesPage = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   // Filter states
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedProgramType, setSelectedProgramType] = useState<string>('all');
-  const [selectedSkillLevel, setSelectedSkillLevel] = useState<string>('all');
-  const [selectedDepartment, setSelectedDepartment] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedProgramType, setSelectedProgramType] = useState<string>("all");
+  const [selectedSkillLevel, setSelectedSkillLevel] = useState<string>("all");
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
   const [durationRange, setDurationRange] = useState<[number, number]>([0, 12]);
   const [showOnlyAvailable, setShowOnlyAvailable] = useState(false);
@@ -54,12 +54,12 @@ const CoursesPage = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch('/api/courses');
+        const response = await fetch("/api/courses");
         const data = await response.json();
         setCourses(data);
         setFilteredCourses(data);
       } catch (error) {
-        console.error('Error fetching courses:', error);
+        console.error("Error fetching courses:", error);
       } finally {
         setLoading(false);
       }
@@ -74,40 +74,51 @@ const CoursesPage = () => {
 
     // Search filter
     if (searchQuery) {
-      filtered = filtered.filter(course =>
-        course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.description.toLowerCase().includes(searchQuery.toLowerCase())
+      filtered = filtered.filter(
+        (course) =>
+          course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          course.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
     // Category filter
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter(course => course.category === selectedCategory);
+    if (selectedCategory !== "all") {
+      filtered = filtered.filter(
+        (course) => course.category === selectedCategory
+      );
     }
 
     // Program type filter
-    if (selectedProgramType !== 'all') {
-      filtered = filtered.filter(course => course.program_type === selectedProgramType);
+    if (selectedProgramType !== "all") {
+      filtered = filtered.filter(
+        (course) => course.program_type === selectedProgramType
+      );
     }
 
     // Skill level filter
-    if (selectedSkillLevel !== 'all') {
-      filtered = filtered.filter(course => course.skill_level === selectedSkillLevel);
+    if (selectedSkillLevel !== "all") {
+      filtered = filtered.filter(
+        (course) => course.skill_level === selectedSkillLevel
+      );
     }
 
     // Department filter
-    if (selectedDepartment !== 'all') {
-      filtered = filtered.filter(course => course.department === selectedDepartment);
+    if (selectedDepartment !== "all") {
+      filtered = filtered.filter(
+        (course) => course.department === selectedDepartment
+      );
     }
 
     // Price range filter
-    filtered = filtered.filter(course =>
-      course.price >= priceRange[0] && course.price <= priceRange[1]
+    filtered = filtered.filter(
+      (course) => course.price >= priceRange[0] && course.price <= priceRange[1]
     );
 
     // Duration range filter
-    filtered = filtered.filter(course =>
-      course.duration_months >= durationRange[0] && course.duration_months <= durationRange[1]
+    filtered = filtered.filter(
+      (course) =>
+        course.duration_months >= durationRange[0] &&
+        course.duration_months <= durationRange[1]
     );
 
     setFilteredCourses(filtered);
@@ -124,7 +135,7 @@ const CoursesPage = () => {
     selectedDepartment,
     priceRange,
     durationRange,
-    showOnlyAvailable
+    showOnlyAvailable,
   ]);
 
   const FilterSection = () => (
@@ -145,7 +156,10 @@ const CoursesPage = () => {
 
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Program Type</h3>
-        <Select value={selectedProgramType} onValueChange={setSelectedProgramType}>
+        <Select
+          value={selectedProgramType}
+          onValueChange={setSelectedProgramType}
+        >
           <SelectTrigger>
             <SelectValue placeholder="Select program type" />
           </SelectTrigger>
@@ -161,7 +175,10 @@ const CoursesPage = () => {
 
       <div className="space-y-2">
         <h3 className="text-lg font-semibold">Skill Level</h3>
-        <Select value={selectedSkillLevel} onValueChange={setSelectedSkillLevel}>
+        <Select
+          value={selectedSkillLevel}
+          onValueChange={setSelectedSkillLevel}
+        >
           <SelectTrigger>
             <SelectValue placeholder="Select skill level" />
           </SelectTrigger>
@@ -255,17 +272,17 @@ const CoursesPage = () => {
 
         {/* Active Filters */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {selectedCategory !== 'all' && (
+          {selectedCategory !== "all" && (
             <Badge variant="secondary" className="hover-card-animation">
               {selectedCategory}
             </Badge>
           )}
-          {selectedProgramType !== 'all' && (
+          {selectedProgramType !== "all" && (
             <Badge variant="secondary" className="hover-card-animation">
               {selectedProgramType}
             </Badge>
           )}
-          {selectedSkillLevel !== 'all' && (
+          {selectedSkillLevel !== "all" && (
             <Badge variant="secondary" className="hover-card-animation">
               {selectedSkillLevel}
             </Badge>
@@ -295,7 +312,10 @@ const CoursesPage = () => {
             ) : (
               <div className="grid md:grid-cols-2 gap-6">
                 {filteredCourses.map((course) => (
-                  <Card key={course.course_id} className="overflow-hidden flex flex-col hover-card-animation">
+                  <Card
+                    key={course.course_id}
+                    className="overflow-hidden flex flex-col hover-card-animation"
+                  >
                     <div className="relative h-48">
                       <img
                         src={course.image_url}
@@ -308,17 +328,22 @@ const CoursesPage = () => {
                         <Clock className="h-4 w-4" />
                         <span>{course.duration_months} months</span>
                       </div>
-                      <h2 className="text-xl font-semibold mb-2">{course.title}</h2>
-                      <p className="text-muted-foreground mb-4 flex-1">
-                        {truncateText(course.description, 30)}
-                      </p>
+                      <h2 className="text-xl font-semibold mb-2">
+                        {course.title}
+                      </h2>
+                      <div
+                        className="text-muted-foreground mb-4 flex-1"
+                        dangerouslySetInnerHTML={{
+                          __html: truncateText(course.description, 30),
+                        }}
+                      />
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-lg font-bold text-emerald-600">
                           K {course.price}
                         </span>
                       </div>
                       <div className="flex gap-3">
-                        <Button 
+                        <Button
                           className="flex-1 bg-emerald-600 hover:bg-emerald-700 group"
                           asChild
                         >
@@ -327,12 +352,10 @@ const CoursesPage = () => {
                             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                           </Link>
                         </Button>
-                        <Button 
-                          variant="outline" 
-                          className="flex-1"
-                          asChild
-                        >
-                          <Link href={`/${course.program_type}/${course.course_id}`}>
+                        <Button variant="outline" className="flex-1" asChild>
+                          <Link
+                            href={`/${course.program_type}/${course.course_id}`}
+                          >
                             View More
                           </Link>
                         </Button>
