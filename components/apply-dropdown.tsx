@@ -13,9 +13,9 @@ const programs = {
     { name: 'Part Time', href: '/part-time' },
   ],
   KIDS: [
-    { name: 'Weekends Program', href: '/weekends' },
+    { name: 'Weekends Program', href: '/weekend' },
     { name: 'Holiday Program', href: '/holiday' },
-    { name: 'Online Program', href: '/online-kids' },
+    { name: 'Online Program', href: '/kids-online' },
     { name: 'Briisp Kids-Hub', href: '/hub' },
   ],
 };

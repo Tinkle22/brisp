@@ -1,8 +1,9 @@
-import Link from 'next/link';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ChevronRight } from 'lucide-react';
-import { headers } from 'next/headers';
+import Link from "next/link";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
+import { headers } from "next/headers";
+import { truncateText } from '@/utils/truncate';
 
 // Define the Course type based on your database schema
 interface Course {
@@ -12,11 +13,11 @@ interface Course {
   duration_months: number;
   price: number;
   department: string;
-  category: 'kids' | 'adults';
+  category: "kids" | "adults";
   image_url: string;
   program_type: string;
   num_lectures: number;
-  skill_level: 'beginner' | 'intermediate' | 'advanced';
+  skill_level: "beginner" | "intermediate" | "advanced";
   languages: string;
   class_days: string;
   course_code: string;
@@ -24,21 +25,21 @@ interface Course {
 
 async function getKidsCourses(): Promise<Course[]> {
   const headersList = headers();
-  const host = headersList.get('host');
-  const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
-  
+  const host = headersList.get("host");
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+
   try {
     const res = await fetch(`${protocol}://${host}/api/courses/kids`, {
-      cache: 'no-store'
+      cache: "no-store",
     });
-    
+
     if (!res.ok) {
-      throw new Error('Failed to fetch courses');
+      throw new Error("Failed to fetch courses");
     }
-    
+
     return res.json();
   } catch (error) {
-    console.error('Error fetching kids courses:', error);
+    console.error("Error fetching kids courses:", error);
     return [];
   }
 }
@@ -50,18 +51,19 @@ export default async function KidsPrograms() {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">
-            Kids Program (Weekend Program)
-          </h2>
-          <Link href="/courses/kids" className="text-emerald-600 hover:text-emerald-700 flex items-center gap-1">
+          <h2 className="text-3xl font-bold">Kids Program (Weekend Program)</h2>
+          <Link
+            href="/courses"
+            className="text-emerald-600 hover:text-emerald-700 flex items-center gap-1"
+          >
             View All Programs <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course) => (
-            <Card 
-              key={course.course_id} 
+            <Card
+              key={course.course_id}
               className="overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               <div className="aspect-video relative">
@@ -80,12 +82,15 @@ export default async function KidsPrograms() {
                     {course.class_days}
                   </p>
                 </div>
-                
+
                 <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
-                
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                  {course.description}
-                </p>
+
+                <div
+                  className="text-muted-foreground mb-4 flex-1"
+                  dangerouslySetInnerHTML={{
+                    __html: truncateText(course.description, 30),
+                  }}
+                />
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs rounded-full">
@@ -100,9 +105,7 @@ export default async function KidsPrograms() {
                   asChild
                   className="w-full bg-emerald-600 hover:bg-emerald-700"
                 >
-                  <Link href={`/courses/${course.course_code}`}>
-                    Read More
-                  </Link>
+                  <Link href={`/${course.program_type}/${course.course_id}`}>Read More</Link>
                 </Button>
               </div>
             </Card>
@@ -111,4 +114,4 @@ export default async function KidsPrograms() {
       </div>
     </section>
   );
-} 
+}

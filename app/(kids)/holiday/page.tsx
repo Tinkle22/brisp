@@ -53,9 +53,12 @@ const Holiday = () => {
                       <span>{course.duration_months} months</span>
                     </div>
                     <h2 className="text-xl font-semibold mb-2">{course.title}</h2>
-                    <p className="text-muted-foreground mb-4 flex-1">
-                      {truncateText(course.description, 30)}
-                    </p>
+                    <div
+                      className="text-muted-foreground mb-4 flex-1"
+                      dangerouslySetInnerHTML={{
+                        __html: truncateText(course.description, 30),
+                      }}
+                    />
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-lg font-bold text-emerald-600">
                         K {course.price}

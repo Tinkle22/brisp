@@ -1,32 +1,35 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { ArrowRight, Clock } from 'lucide-react';
-import AccommodationCard from '@/components/accommodation-card';
-import { truncateText } from '@/utils/truncate';
+import React, { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, Clock } from "lucide-react";
+import AccommodationCard from "@/components/accommodation-card";
+import { truncateText } from "@/utils/truncate";
 
-const Weekend = () => {
+const FullTimeCourses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const response = await fetch('/api/courses/weekend?program_type=weekend');
+      const response = await fetch(
+        "/api/courses/distance?program_type=distance"
+      );
       const data = await response.json();
       setCourses(data);
     };
 
     fetchCourses();
   }, []);
+
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
-            Weekend Programs
+            Distance Programs
           </h1>
           <p className="text-lg text-muted-foreground">
             Intensive professional courses designed to kickstart your career
@@ -38,7 +41,10 @@ const Weekend = () => {
           <div className="lg:flex-1">
             <div className="grid md:grid-cols-2 gap-6">
               {courses.map((course) => (
-                <Card key={course.course_id} className="overflow-hidden flex flex-col">
+                <Card
+                  key={course.course_id}
+                  className="overflow-hidden flex flex-col"
+                >
                   <div className="relative h-48">
                     <img
                       src={course.image_url}
@@ -51,7 +57,12 @@ const Weekend = () => {
                       <Clock className="h-4 w-4" />
                       <span>{course.duration_months} months</span>
                     </div>
-                    <h2 className="text-xl font-semibold mb-2">{course.title}</h2>
+                    <h2 className="text-xl font-semibold mb-2">
+                      {course.title}
+                    </h2>
+                    {/* <p className="text-muted-foreground mb-4 flex-1">
+                      {truncateText(course.description, 30)}
+                    </p> */}
                     <div
                       className="text-muted-foreground mb-4 flex-1"
                       dangerouslySetInnerHTML={{
@@ -64,7 +75,7 @@ const Weekend = () => {
                       </span>
                     </div>
                     <div className="flex gap-3">
-                      <Button 
+                      <Button
                         className="flex-1 bg-emerald-600 hover:bg-emerald-700 group"
                         asChild
                       >
@@ -73,12 +84,8 @@ const Weekend = () => {
                           <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </Button>
-                      <Button 
-                        variant="outline" 
-                        className="flex-1"
-                        asChild
-                      >
-                        <Link href={`/weekend/${course.course_id}`}>
+                      <Button variant="outline" className="flex-1" asChild>
+                        <Link href={`/distance/${course.course_id}`}>
                           View More
                         </Link>
                       </Button>
@@ -101,4 +108,4 @@ const Weekend = () => {
   );
 };
 
-export default Weekend;
+export default FullTimeCourses;

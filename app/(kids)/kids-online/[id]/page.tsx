@@ -7,11 +7,11 @@ export async function generateStaticParams() {
   try {
     const [courses] = await pool.query(
       'SELECT course_id FROM courses WHERE program_type = ?',
-      ['weekend']
+      ['kids-online']
     );
     
     if (!courses || (courses as any[]).length === 0) {
-      console.error('No courses found for weekend');
+      console.error('No courses found for kids-online');
       return [];
     }
 
@@ -34,7 +34,7 @@ async function getCourse(id: string) {
       FROM courses c
       LEFT JOIN curriculum curr ON c.course_id = curr.course_id
       LEFT JOIN gallery g ON c.course_id = g.course_id
-      WHERE c.course_id = ? AND c.program_type = 'weekend'
+      WHERE c.course_id = ? AND c.program_type = 'kids-online'
       GROUP BY c.course_id`,
       [id]
     );

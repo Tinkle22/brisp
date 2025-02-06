@@ -1,11 +1,17 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Clock, Users, BookOpen, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
-import Link from 'next/link';
-import { truncateText } from '@/utils/truncate';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  Clock,
+  Users,
+  BookOpen,
+  Calendar,
+  ArrowRight,
+  CheckCircle,
+} from "lucide-react";
+import Link from "next/link";
 
 const iconMap = {
   Clock,
@@ -19,7 +25,7 @@ interface CourseDetailsProps {
 }
 
 export default function CourseDetails({ course }: CourseDetailsProps) {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState("overview");
 
   return (
     <div className="min-h-screen py-12">
@@ -44,7 +50,8 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
             {/* Course Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
               {course.stats.map((stat: any, index: number) => {
-                const IconComponent = iconMap[stat.icon as keyof typeof iconMap];
+                const IconComponent =
+                  iconMap[stat.icon as keyof typeof iconMap];
                 return (
                   <Card key={index} className="p-4">
                     <div className="flex flex-col items-center text-center">
@@ -52,7 +59,9 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                         <IconComponent className="h-5 w-5 text-emerald-600" />
                       </div>
                       <div className="font-semibold">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {stat.label}
+                      </div>
                     </div>
                   </Card>
                 );
@@ -61,14 +70,14 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
 
             {/* Tabs */}
             <div className="flex space-x-1 mb-6 border-b">
-              {['overview', 'curriculum'].map((tab) => (
+              {["overview", "curriculum"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 py-2 text-sm font-medium capitalize ${
                     activeTab === tab
-                      ? 'border-b-2 border-emerald-600 text-emerald-600'
-                      : 'text-muted-foreground'
+                      ? "border-b-2 border-emerald-600 text-emerald-600"
+                      : "text-muted-foreground"
                   }`}
                 >
                   {tab}
@@ -77,26 +86,28 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
             </div>
 
             {/* Tab Content */}
-            {activeTab === 'overview' ? (
+            {activeTab === "overview" ? (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-2xl font-bold mb-4">Course Description</h2>
+                  <h2 className="text-2xl font-bold mb-4">
+                    Course Description
+                  </h2>
                   <div
-                      className="text-muted-foreground mb-4 flex-1"
-                      dangerouslySetInnerHTML={{
-                        __html: truncateText(course.description),
-                      }}
-                    />
+                    className="text-muted-foreground"
+                    dangerouslySetInnerHTML={{ __html: course.description }}
+                  />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold mb-4">Course Highlights</h2>
                   <div className="grid gap-3">
-                    {course.highlights.map((highlight: string, index: number) => (
-                      <div key={index} className="flex items-center gap-3">
-                        <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />
-                        <span>{highlight}</span>
-                      </div>
-                    ))}
+                    {course.highlights.map(
+                      (highlight: string, index: number) => (
+                        <div key={index} className="flex items-center gap-3">
+                          <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                          <span>{highlight}</span>
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
               </div>
@@ -108,12 +119,17 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                     <Card key={index} className="p-6">
                       <h3 className="font-semibold mb-3">{section.week}</h3>
                       <ul className="space-y-2">
-                        {section.topics.map((topic: string, topicIndex: number) => (
-                          <li key={topicIndex} className="flex items-center gap-2 text-muted-foreground">
-                            <div className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
-                            {topic}
-                          </li>
-                        ))}
+                        {section.topics.map(
+                          (topic: string, topicIndex: number) => (
+                            <li
+                              key={topicIndex}
+                              className="flex items-center gap-2 text-muted-foreground"
+                            >
+                              <div className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                              {topic}
+                            </li>
+                          )
+                        )}
                       </ul>
                     </Card>
                   ))}
@@ -134,7 +150,10 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                   <span>{course.duration}</span>
                 </div>
               </div>
-              <Button className="w-full bg-emerald-600 hover:bg-emerald-700 group" asChild>
+              <Button
+                className="w-full bg-emerald-600 hover:bg-emerald-700 group"
+                asChild
+              >
                 <Link href="/apply">
                   Apply Now
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -146,4 +165,4 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
       </div>
     </div>
   );
-} 
+}
