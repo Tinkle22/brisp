@@ -8,8 +8,18 @@ import { ArrowRight, Clock } from 'lucide-react';
 import AccommodationCard from '@/components/accommodation-card';
 import { truncateText } from '@/utils/truncate';
 
+interface Course {
+  course_id: string;
+  image_url: string;
+  title: string;
+  duration_months: number;
+  description: string;
+  price: number;
+  course_code: string;
+}
+
 const Holiday = () => {
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     const fetchCourses = async () => {
