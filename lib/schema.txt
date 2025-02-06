@@ -166,11 +166,7 @@ CREATE TABLE applications (
     reviewed_by INT,
     review_date TIMESTAMP NULL,
     review_notes TEXT,
-    
-    -- Timestamps
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    
+
     -- Indexes and Foreign Keys
     FOREIGN KEY (course_id) REFERENCES courses(course_id),
     INDEX idx_status (status),
