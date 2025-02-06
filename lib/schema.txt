@@ -173,3 +173,4 @@ CREATE TABLE applications (
     INDEX idx_application_date (application_date),
     INDEX idx_email (email)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
