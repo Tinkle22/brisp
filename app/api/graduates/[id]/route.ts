@@ -1,13 +1,19 @@
 import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 import { uploadToCloudinary } from '@/lib/cloudinary';
+import { RowDataPacket } from 'mysql2';
+
+interface Graduate extends RowDataPacket {
+  graduate_id: string;
+  // add other properties as needed
+}
 
 export async function GET(
   request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
-    const [graduates] = await pool.query(
+    const [graduates] = await pool.query<(Graduate & RowDataPacket)[]>(
       `SELECT * FROM graduates WHERE graduate_id = ?`,
       [params.id]
     );

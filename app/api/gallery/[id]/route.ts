@@ -1,6 +1,15 @@
 import { NextResponse } from 'next/server';
 import pool from '@/lib/db';
 
+interface Gallery {
+  gallery_id: string;
+  image_title: string;
+  image_description: string;
+  image_type: string;
+  display_order: number;
+  is_active: boolean;
+}
+
 export async function GET(
     request: Request,
     { params }: { params: { id: string } }

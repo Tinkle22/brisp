@@ -2,10 +2,15 @@
 
 import React, { useEffect, useState } from 'react';
 
-
+interface Notice {
+  publish_date: string;
+  title: string;
+  description: string;
+  // add any additional properties as needed
+}
 
 const NoticeBoard = () => {
-  const [notices, setNotices] = useState([]);
+  const [notices, setNotices] = useState<Notice[]>([]);
 
   useEffect(() => {
     const fetchNotices = async () => {
