@@ -81,7 +81,10 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-2xl font-bold mb-4">Course Description</h2>
-                  <p className="text-muted-foreground">{course.description}</p>
+                  <div
+                    className="text-muted-foreground"
+                    dangerouslySetInnerHTML={{ __html: course.description }}
+                  />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold mb-4">Course Highlights</h2>
