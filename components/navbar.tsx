@@ -44,6 +44,7 @@ const navigation = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [desktopMenuOpen, setDesktopMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const renderNavItem = (item: any) => {
@@ -90,9 +91,9 @@ export default function Navbar() {
   };
 
   return (
-    <header className="bg-background border-b">
+    <header className="fixed  z-30 w-full  " >
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 "
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -117,13 +118,48 @@ export default function Navbar() {
             <Menu className="h-6 w-6" aria-hidden="true" />
           </Button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item) => (
-            <div key={item.name}>{renderNavItem(item)}</div>
-          ))}
+        <div className={cn(
+          "hidden lg:flex lg:gap-x-10 lg:fixed lg:inset-0 lg:z-30",
+          desktopMenuOpen ? "lg:block" : "lg:hidden"
+        )}>
+          <div className="fixed inset-0 bg-background/20 backdrop-blur-sm" />
+          <div className="fixed inset-y-0 right-0 w-full  bg-background px-6 py-6 sm:max-w-sm lg:max-w-md animate-bounce-in">
+            <div className="flex items-center justify-between mb-6">
+              <Link href="/" className="-m-1.5 p-1.5 flex items-center space-x-2">
+                <Image
+                  className="flex items-center"
+                  src="/logo.png"
+                  height={100}
+                  width={100}
+                  alt="logo"
+                />
+              </Link>
+              <Button
+                variant="ghost"
+                className="-m-2.5 rounded-md p-2.5"
+                onClick={() => setDesktopMenuOpen(false)}
+              >
+                <span className="sr-only">Close menu</span>
+                <X className="h-6 w-6" aria-hidden="true" />
+              </Button>
+            </div>
+            <div className="space-y-4">
+              {navigation.map((item) => (
+                <div key={item.name}>{renderNavItem(item)}</div>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
           <ThemeToggle />
+          <Button
+            variant="ghost"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+            onClick={() => setDesktopMenuOpen(true)}
+          >
+            <span className="sr-only">Open main menu</span>
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          </Button>
         </div>
       </nav>
 

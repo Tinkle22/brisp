@@ -36,7 +36,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/10 to-background"></div>
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 min-h-96">
           <div className="mx-auto max-w-2xl text-center animate-fade-in">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl animate-slide-up">
               Transform Your Future with Professional Education
@@ -68,7 +68,7 @@ export default function Home() {
       </section>
 
       {/* Programs Showcase Section */}
-      <ProgramsShowcase />
+      {/* <ProgramsShowcase /> */}
 
       <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto px-6 lg:px-8 py-8">
         {/* Main Content */}

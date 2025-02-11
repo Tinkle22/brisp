@@ -55,7 +55,7 @@ export default function ApplyDropdown() {
       </Link>
 
       {isOpen && (
-        <Card className="absolute left-1 mt-2 w-[600px] origin-top-right rounded-lg bg-background shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50 p-6">
+       <Card className="absolute right-0 mt-2 w-[600px] origin-top-right rounded-lg bg-background shadow-lg z-50 ring-1 ring-black ring-opacity-5 focus:outline-none p-6">
           <div className="grid grid-cols-2 gap-8">
             {/* Adults Section */}
             <div>

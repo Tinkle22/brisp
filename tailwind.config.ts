@@ -78,10 +78,29 @@ const config: Config = {
             height: '0',
           },
         },
+        'bounce-in': {
+          '0%': { 
+            transform: 'translateX(100%)',
+            opacity: '0'
+          },
+          '60%': {
+            transform: 'translateX(-10%)',
+            opacity: '0.8'
+          },
+          '80%': {
+            transform: 'translateX(5%)',
+            opacity: '0.9'
+          },
+          '100%': {
+            transform: 'translateX(0)',
+            opacity: '1'
+          }
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'bounce-in': 'bounce-in 0.8s ease-out'
       },
     },
   },

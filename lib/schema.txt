@@ -174,3 +174,21 @@ CREATE TABLE applications (
     INDEX idx_email (email)
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- Create the course_resources table
+CREATE TABLE course_resources (
+    resource_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    file_url VARCHAR(255) NOT NULL COMMENT 'URL of the file hosted on Cloudinary',
+    file_type ENUM('video', 'document', 'audio', 'other') NOT NULL COMMENT 'Type of resource',
+    file_size INT COMMENT 'Size of the file in bytes',
+    description TEXT COMMENT 'Optional description of the resource',
+    upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'Date when the resource was uploaded',
+    is_public BOOLEAN DEFAULT false COMMENT 'Whether the resource is publicly accessible',
+    is_active BOOLEAN DEFAULT true COMMENT 'Whether the resource is currently active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE,
+    INDEX idx_course_resources (course_id, is_active),
+    INDEX idx_public_resources (is_public, is_active)
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

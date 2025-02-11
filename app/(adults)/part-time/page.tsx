@@ -39,7 +39,7 @@ const FullTimeCourses = () => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
-            Full-Time Programs
+            Part-Time Programs
           </h1>
           <p className="text-lg text-muted-foreground">
             Intensive professional courses designed to kickstart your career
@@ -95,7 +95,7 @@ const FullTimeCourses = () => {
                         </Link>
                       </Button>
                       <Button variant="outline" className="flex-1" asChild>
-                        <Link href={`/fulltime/${course.course_id}`}>
+                        <Link href={`/full-time/${course.course_id}`}>
                           View More
                         </Link>
                       </Button>

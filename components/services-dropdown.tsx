@@ -112,8 +112,8 @@ export default function ServicesDropdown() {
   }, [isOpen]);
 
   return (
-    <div className="relative services-dropdown">
-      <button 
+    <div className="relative services-dropdown z-50">
+      <button
         className="text-sm font-semibold leading-6 text-muted-foreground hover:text-emerald-600"
         onClick={(e) => {
           e.stopPropagation();
@@ -127,7 +127,7 @@ export default function ServicesDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-[800px] origin-top-left rounded-lg bg-background shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+  <Card className="absolute right-0 mt-2 w-[600px] origin-top-right rounded-lg bg-background shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-6">
           <div className="flex">
             {/* Services List */}
             <div className="w-1/3 border-r">
@@ -191,7 +191,7 @@ export default function ServicesDropdown() {
               )}
             </div>
           </div>
-        </div>
+        </Card>
       )}
     </div>
   );
