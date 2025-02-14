@@ -114,7 +114,7 @@ export default function ServicesDropdown() {
   return (
     <div className="relative services-dropdown z-50">
       <button
-        className="text-sm font-semibold leading-6 text-muted-foreground hover:text-emerald-600"
+        className="text-sm font-semibold leading-6 text-muted-foreground hover:text-amber-600"
         onClick={(e) => {
           e.stopPropagation();
           setIsOpen(!isOpen);
@@ -127,33 +127,35 @@ export default function ServicesDropdown() {
       </button>
 
       {isOpen && (
-  <Card className="absolute right-0 mt-2 w-[600px] origin-top-right rounded-lg bg-background shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-6">
-          <div className="flex">
+        <Card className="absolute right-0 mt-2 w-full md:w-[600px] origin-top-right rounded-lg bg-background shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-4 md:p-6">
+          <div className="flex flex-col md:flex-row">
             {/* Services List */}
-            <div className="w-1/3 border-r">
-              <div className="p-2">
+            <div className="w-full md:w-1/3 md:border-r">
+              <div className="p-1 md:p-2">
                 {services.map((service) => (
                   <button
                     key={service.id}
-                    className="flex items-center gap-2 w-full p-3 text-sm rounded-md hover:bg-muted text-left"
+                    className={`flex items-center gap-2 w-full p-2 md:p-3 text-sm rounded-md hover:bg-muted text-left ${
+                      activeService?.title === service.details.title ? 'bg-muted' : ''
+                    }`}
                     onMouseEnter={() => setActiveService(service.details)}
                     onClick={(e) => {
                       e.stopPropagation();
                       setActiveService(service.details);
                     }}
                   >
-                    <service.icon className="h-5 w-5 text-emerald-600" />
-                    <span>{service.label}</span>
-                    <ChevronRight className="h-4 w-4 ml-auto" />
+                    <service.icon className="h-4 w-4 md:h-5 md:w-5 text-amber-600" />
+                    <span className="text-xs md:text-sm">{service.label}</span>
+                    <ChevronRight className="h-3 w-3 md:h-4 md:w-4 ml-auto" />
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Details Panel */}
-            <div className="w-2/3 p-4">
+            <div className="w-full md:w-2/3 p-2 md:p-4">
               {activeService ? (
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                   <div className="aspect-video rounded-lg overflow-hidden">
                     <img
                       src={activeService.image}
@@ -162,21 +164,21 @@ export default function ServicesDropdown() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">{activeService.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">
+                    <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2">{activeService.title}</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4">
                       {activeService.description}
                     </p>
-                    <div className="flex gap-3">
+                    <div className="flex gap-2 md:gap-3">
                       <Link
                         href={activeService.applyLink}
-                        className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-emerald-600 text-white hover:bg-emerald-700 h-10 px-4 py-2"
+                        className="inline-flex items-center justify-center rounded-md text-xs md:text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-emerald-600 text-white hover:bg-amber-700 h-8 md:h-10 px-3 md:px-4 py-1 md:py-2"
                         onClick={(e) => e.stopPropagation()}
                       >
                         Apply
                       </Link>
                       <Link
                         href={activeService.viewMoreLink}
-                        className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                        className="inline-flex items-center justify-center rounded-md text-xs md:text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-8 md:h-10 px-3 md:px-4 py-1 md:py-2"
                         onClick={(e) => e.stopPropagation()}
                       >
                         View More
@@ -185,8 +187,8 @@ export default function ServicesDropdown() {
                   </div>
                 </div>
               ) : (
-                <div className="h-full flex items-center justify-center text-muted-foreground">
-                  <p>Select a service to see details</p>
+                <div className="h-32 md:h-full flex items-center justify-center text-muted-foreground">
+                  <p className="text-xs md:text-sm">Select a service to see details</p>
                 </div>
               )}
             </div>

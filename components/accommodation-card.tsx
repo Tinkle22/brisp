@@ -23,7 +23,7 @@ const AccommodationCard = () => {
       </p>
 
       <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-        <MapPin className="h-4 w-4 text-emerald-600" />
+        <MapPin className="h-4 w-4 text-amber-600" />
         <span>Mearwood Ndeke Phase 2</span>
       </div>
 
@@ -34,12 +34,12 @@ const AccommodationCard = () => {
         </div>
         <div className="flex justify-between items-center text-sm">
           <span>Monthly Rent</span>
-          <span className="font-semibold text-emerald-600">K300</span>
+          <span className="font-semibold text-amber-600">K300</span>
         </div>
       </div>
 
       <Button 
-        className="w-full mt-6 bg-emerald-600 hover:bg-emerald-700"
+        className="w-full mt-6 bg-amber-600 hover:bg-amber-700"
         asChild
       >
         <Link href="/apply-accommodation">

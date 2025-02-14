@@ -45,7 +45,7 @@ export default function ApplyDropdown() {
     <div className="relative apply-dropdown">
       <Link
         href="#"
-        className="text-sm font-semibold leading-6 text-muted-foreground hover:text-emerald-600"
+        className="text-sm font-semibold leading-6 text-muted-foreground hover:text-amber-600"
         onClick={(e) => {
           e.stopPropagation();
           setIsOpen(!isOpen);
@@ -55,17 +55,17 @@ export default function ApplyDropdown() {
       </Link>
 
       {isOpen && (
-       <Card className="absolute right-0 mt-2 w-[600px] origin-top-right rounded-lg bg-background shadow-lg z-50 ring-1 ring-black ring-opacity-5 focus:outline-none p-6">
-          <div className="grid grid-cols-2 gap-8">
+        <Card className="absolute right-0 mt-2 w-full md:w-[600px] origin-top-right rounded-lg bg-background shadow-lg z-50 ring-1 ring-black ring-opacity-5 focus:outline-none p-4 md:p-6">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Adults Section */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-emerald-600">ADULTS</h3>
-              <div className="space-y-2">
+            <div className="w-full">
+              <h3 className="text-lg font-semibold mb-3 md:mb-4 text-amber-600">ADULTS</h3>
+              <div className="space-y-1 md:space-y-2">
                 {programs.ADULTS.map((program) => (
                   <Link
                     key={program.name}
                     href={program.href}
-                    className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-md transition-colors"
+                    className="block px-3 md:px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-md transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {program.name}
@@ -75,14 +75,14 @@ export default function ApplyDropdown() {
             </div>
 
             {/* Kids Section */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-emerald-600">KIDS</h3>
-              <div className="space-y-2">
+            <div className="w-full">
+              <h3 className="text-lg font-semibold mb-3 md:mb-4 text-amber-600">KIDS</h3>
+              <div className="space-y-1 md:space-y-2">
                 {programs.KIDS.map((program) => (
                   <Link
                     key={program.name}
                     href={program.href}
-                    className="block px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-md transition-colors"
+                    className="block px-3 md:px-4 py-2 text-sm text-muted-foreground hover:bg-muted rounded-md transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {program.name}

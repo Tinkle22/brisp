@@ -56,7 +56,7 @@ export default function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button
                 size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 transition-all duration-300 hover:scale-105"
+                className="bg-amber-600 hover:bg-amber-700 transition-all duration-300 hover:scale-105"
                 asChild
               >
                 <Link href="/courses">Explore Courses</Link>
@@ -105,7 +105,7 @@ export default function Home() {
           {/* Notice Board */}
           <Card className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Bell className="h-5 w-5 text-emerald-600" />
+              <Bell className="h-5 w-5 text-amber-600" />
               <h2 className="text-xl font-semibold">Notice Board</h2>
             </div>
             <NoticeBoard />
@@ -113,7 +113,7 @@ export default function Home() {
           {/* Downloads */}
           <Card className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Download className="h-5 w-5 text-emerald-600" />
+              <Download className="h-5 w-5 text-amber-600" />
               <h2 className="text-xl font-semibold">Downloads</h2>
             </div>
             <div className="space-y-3">
@@ -138,7 +138,7 @@ export default function Home() {
           {/* Campus Location */}
           <Card className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <MapPin className="h-5 w-5 text-emerald-600" />
+              <MapPin className="h-5 w-5 text-amber-600" />
               <h2 className="text-xl font-semibold">Campus Location</h2>
             </div>
             <div className="aspect-video relative mb-4 rounded-lg overflow-hidden">
@@ -152,8 +152,8 @@ export default function Home() {
               <p className="font-medium">Main Campus</p>
               <p className="text-muted-foreground">Meanwood Ndeke Phase 2</p>
               <p className="text-muted-foreground">Plot 2436 Lusaka</p>
-              <p className="text-emerald-600">+260 953500666</p>
-              <p className="text-emerald-600">
+              <p className="text-amber-600">+260 953500666</p>
+              <p className="text-amber-600">
                 briispacademyacademy111@gmail.com
               </p>
             </div>
@@ -188,7 +188,7 @@ export default function Home() {
             </p>
             <div className="mt-10 flex items-center justify-center">
               <Button
-                className="bg-emerald-600 hover:bg-emerald-700 group"
+                className="bg-amber-600 hover:bg-amber-700 group"
                 size="lg"
                 asChild
               >

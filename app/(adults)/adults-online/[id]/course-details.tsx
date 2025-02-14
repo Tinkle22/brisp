@@ -67,7 +67,7 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 py-2 text-sm font-medium capitalize ${
                     activeTab === tab
-                      ? 'border-b-2 border-emerald-600 text-emerald-600'
+                      ? 'border-b-2 border-amber-600 text-emerald-600'
                       : 'text-muted-foreground'
                   }`}
                 >

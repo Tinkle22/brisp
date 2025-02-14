@@ -146,7 +146,7 @@ export default function AnimatedShowcase() {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? 'bg-white w-4' : 'bg-white/50'
+                    index === currentIndex ? 'bg-background w-4' : 'bg-white/50'
                   }`}
                 />
               ))}

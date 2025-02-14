@@ -81,8 +81,8 @@ export default function Navbar() {
         className={cn(
           "text-sm font-semibold leading-6",
           pathname === item.href
-            ? "text-emerald-600"
-            : "text-muted-foreground hover:text-emerald-600"
+            ? "text-amber-600"
+            : "text-muted-foreground hover:text-amber-600"
         )}
       >
         {item.name}
@@ -204,7 +204,7 @@ export default function Navbar() {
                           <Link
                             key={dropdownItem.name}
                             href={dropdownItem.href}
-                            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-muted-foreground hover:text-emerald-600 pl-6"
+                            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-muted-foreground hover:text-amber-600 pl-6"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {dropdownItem.name}
@@ -221,8 +221,8 @@ export default function Navbar() {
                         className={cn(
                           "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7",
                           pathname === item.href
-                            ? "text-emerald-600"
-                            : "text-muted-foreground hover:text-emerald-600"
+                            ? "text-amber-600"
+                            : "text-muted-foreground hover:text-amber-600"
                         )}
                         onClick={() => setMobileMenuOpen(false)}
                       >

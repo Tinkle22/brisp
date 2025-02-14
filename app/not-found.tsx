@@ -12,14 +12,14 @@ export default function NotFound() {
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-2">
-            <GraduationCap className="h-12 w-12 text-emerald-600" />
+            <GraduationCap className="h-12 w-12 text-amber-600" />
             <span className="text-2xl font-bold">Academy</span>
           </div>
         </div>
 
         {/* 404 Text */}
         <div className="space-y-4">
-          <h1 className="text-8xl font-bold text-emerald-600">Stay Tuned</h1>
+          <h1 className="text-8xl font-bold text-amber-600">Stay Tuned</h1>
           <h2 className="text-3xl font-semibold">Page Coming Soon</h2>
           <p className="text-muted-foreground max-w-md mx-auto">
             The page you're looking for is in development. 
@@ -40,7 +40,7 @@ export default function NotFound() {
             </Link>
           </Button>
           <Button 
-            className="w-full bg-emerald-600 hover:bg-emerald-700 flex items-center gap-2"
+            className="w-full bg-amber-600 hover:bg-amber-700 flex items-center gap-2"
             asChild
           >
             <Link href="/courses">
@@ -65,7 +65,7 @@ export default function NotFound() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-emerald-600 transition-colors px-3 py-1"
+                className="text-sm text-muted-foreground hover:text-amber-600 transition-colors px-3 py-1"
               >
                 {link.name}
               </Link>
@@ -76,7 +76,7 @@ export default function NotFound() {
         {/* Back Button */}
         <button
           onClick={() => window.history.back()}
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-emerald-600 transition-colors mt-8"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-amber-600 transition-colors mt-8"
         >
           <ArrowLeft className="h-4 w-4" />
           Go Back

@@ -29,7 +29,7 @@ const NoticeBoard = () => {
           key={index} 
           className="border-b pb-4 last:border-b-0 last:pb-0 transition-all duration-300 hover:bg-muted/50"
         >
-          <time className="text-sm text-emerald-600 font-medium">
+          <time className="text-sm text-amber-600 font-medium">
             {new Date(notice.publish_date).toLocaleDateString('en-US', {
               month: 'long',
               day: 'numeric',

@@ -31,13 +31,13 @@ export default function Footer() {
             Empowering minds through quality education and professional development.
           </p>
           <div className="flex space-x-4">
-            <Link href="/courses" className="text-sm text-muted-foreground hover:text-emerald-600">
+            <Link href="/courses" className="text-sm text-muted-foreground hover:text-amber-600">
               Courses
             </Link>
-            <Link href="/about" className="text-sm text-muted-foreground hover:text-emerald-600">
+            <Link href="/about" className="text-sm text-muted-foreground hover:text-amber-600">
               About
             </Link>
-            <Link href="/contact" className="text-sm text-muted-foreground hover:text-emerald-600">
+            <Link href="/contact" className="text-sm text-muted-foreground hover:text-amber-600">
               Contact
             </Link>
           </div>
