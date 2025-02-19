@@ -65,21 +65,15 @@ CREATE TABLE notice_board (
 
 -- Create the downloadable_files table
 CREATE TABLE downloadable_files (
-    file_id INT PRIMARY KEY AUTO_INCREMENT,
-    course_id INT,
-    title VARCHAR(255) NOT NULL,
-    file_url VARCHAR(255) NOT NULL,
-    file_type VARCHAR(50) NOT NULL,
-    file_size INT COMMENT 'Size in bytes',
-    description TEXT,
-    download_count INT DEFAULT 0,
-    is_public BOOLEAN DEFAULT false,
-    is_active BOOLEAN DEFAULT true,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE SET NULL,
-    INDEX idx_course_files (course_id, is_active),
-    INDEX idx_public_files (is_public, is_active)
+  file_id INT AUTO_INCREMENT PRIMARY KEY,
+  file_name VARCHAR(255) NOT NULL,
+  file_url VARCHAR(512) NOT NULL,
+  file_type VARCHAR(100),
+  file_size INT,
+  description TEXT,
+  course_id INT,
+  upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
 );
 
 

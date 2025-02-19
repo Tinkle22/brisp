@@ -324,7 +324,7 @@ const CoursesPage = () => {
                       />
                     </div>
                     <div className="p-6 flex flex-col flex-1">
-                      <div className="flex items-center gap-2 text-sm text-emerald-600 mb-2">
+                      <div className="flex items-center gap-2 text-sm text-amber-600 mb-2">
                         <Clock className="h-4 w-4" />
                         <span>{course.duration_months} months</span>
                       </div>
@@ -338,13 +338,13 @@ const CoursesPage = () => {
                         }}
                       />
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-lg font-bold text-emerald-600">
+                        <span className="text-lg font-bold text-amber-600">
                           K {course.price}
                         </span>
                       </div>
                       <div className="flex gap-3">
                         <Button
-                          className="flex-1 bg-emerald-600 hover:bg-emerald-700 group"
+                          className="flex-1 bg-amber-6000 hover:bg-amber-600 group"
                           asChild
                         >
                           <Link href={`/apply?program=${course.course_code}`}>

@@ -53,7 +53,7 @@ export default async function GraduatesPage() {
                 <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-200">
                   <div className="relative">
                     {index < 3 && (
-                      <div className="absolute top-4 left-4 z-10 bg-emerald-600 text-white px-3 py-1 rounded-full flex items-center gap-1">
+                      <div className="absolute top-4 left-4 z-10 bg-amber-600 text-white px-3 py-1 rounded-full flex items-center gap-1">
                         <Trophy className="w-4 h-4" />
                         <span>{index + 1}</span>
                       </div>
@@ -78,12 +78,12 @@ export default async function GraduatesPage() {
                         <span>Class of {graduate.year_of_completion}</span>
                       </div>
                       <div className="flex items-center gap-2 text-muted-foreground">
-                        <Star className="w-4 h-4 text-emerald-600" />
+                        <Star className="w-4 h-4 text-amber-600" />
                         <span>Final Score: {graduate.final_score}</span>
                       </div>
                     </div>
                     <div className="mt-6">
-                      <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
+                      <Button className="w-full bg-amber-600 hover:bg-amber-700">
                         View Profile
                       </Button>
                     </div>

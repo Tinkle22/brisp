@@ -7,7 +7,7 @@ export default function CampusPage() {
   return (
     <div className="min-h-screen">
       {/* Admissions Banner */}
-      <div className="bg-emerald-600 text-white">
+      {/* <div className="bg-amber-600 text-white">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <p className="text-sm sm:text-base font-medium">
             🎓 Admissions are now open for {new Date().getFullYear()}! Early bird discounts available.
@@ -16,7 +16,7 @@ export default function CampusPage() {
             <Link href="/apply">Apply Now</Link>
           </Button>
         </div>
-      </div>
+      </div> */}
 
       {/* Hero Section */}
       <div className="relative h-[300px] sm:h-[400px]">
@@ -51,7 +51,7 @@ export default function CampusPage() {
               ].map((item, index) => (
                 <Card key={index} className="p-4 flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-emerald-600/10">
-                    <item.icon className="h-5 w-5 text-emerald-600" />
+                    <item.icon className="h-5 w-5 text-amber-600" />
                   </div>
                   <span className="font-medium text-sm">{item.label}</span>
                 </Card>
@@ -63,25 +63,25 @@ export default function CampusPage() {
               <h3 className="text-lg font-semibold mb-4">Campus Location</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-emerald-600 mt-1" />
+                  <MapPin className="h-5 w-5 text-amber-600 mt-1" />
                   <div>
                     <p className="font-medium">Meanwood Ndeke Phase 2</p>
                     <p className="text-sm text-muted-foreground">Plot 2436 Lusaka</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-emerald-600" />
+                  <Phone className="h-5 w-5 text-amber-600" />
                   <p>+260 953500666</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-emerald-600" />
+                  <Mail className="h-5 w-5 text-amber-600" />
                   <p>briispacademyacademy111@gmail.com</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Globe className="h-5 w-5 text-emerald-600" />
+                  <Globe className="h-5 w-5 text-amber-600" />
                   <p>briispacademy.com</p>
                 </div>
-                <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
+                <Button className="w-full bg-amber-600 hover:bg-amber-600">
                   Get Directions
                 </Button>
               </div>

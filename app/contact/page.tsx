@@ -41,7 +41,7 @@ export default function ContactPage() {
             <Card key={item.title} className="p-6">
               <div className="flex items-start space-x-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-600/10">
-                  <item.icon className="h-6 w-6 text-emerald-600" />
+                  <item.icon className="h-6 w-6 text-amber-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold">{item.title}</h3>

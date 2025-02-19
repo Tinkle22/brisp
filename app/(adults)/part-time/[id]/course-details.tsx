@@ -57,7 +57,7 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                   <Card key={index} className="p-4">
                     <div className="flex flex-col items-center text-center">
                       <div className="p-2 rounded-lg bg-emerald-600/10 mb-2">
-                        <IconComponent className="h-5 w-5 text-emerald-600" />
+                        <IconComponent className="h-5 w-5 text-amber-600" />
                       </div>
                       <div className="font-semibold">{stat.value}</div>
                       <div className="text-sm text-muted-foreground">
@@ -77,7 +77,7 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 py-2 text-sm font-medium capitalize ${
                     activeTab === tab
-                      ? "border-b-2 border-emerald-600 text-emerald-600"
+                      ? "border-b-2 border-amber-600 text-amber-600"
                       : "text-muted-foreground"
                   }`}
                 >
@@ -104,7 +104,7 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                     {course.highlights.map(
                       (highlight: string, index: number) => (
                         <div key={index} className="flex items-center gap-3">
-                          <CheckCircle className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                          <CheckCircle className="h-5 w-5 text-amber-600 flex-shrink-0" />
                           <span>{highlight}</span>
                         </div>
                       )
@@ -126,7 +126,7 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                               key={topicIndex}
                               className="flex items-center gap-2 text-muted-foreground"
                             >
-                              <div className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
+                              <div className="h-1.5 w-1.5 rounded-full bg-amber-600" />
                               {topic}
                             </li>
                           )
@@ -142,17 +142,17 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
           {/* Sidebar */}
           <div>
             <Card className="p-6 sticky top-6">
-              <div className="text-3xl font-bold text-emerald-600 mb-4">
+              <div className="text-3xl font-bold text-amber-600 mb-4">
                 {course.price}
               </div>
               <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-emerald-600" />
+                  <Clock className="h-5 w-5 text-amber-600" />
                   <span>{course.duration}</span>
                 </div>
               </div>
               <Button
-                className="w-full bg-emerald-600 hover:bg-emerald-700 group"
+                className="w-full bg-amber-600 hover:bg-amber-700 group"
                 asChild
               >
                 <Link href="/apply">

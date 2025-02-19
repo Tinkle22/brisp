@@ -66,7 +66,7 @@ export default function AdultsAdmissionsPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Announcement Banner */}
-      <div className="bg-emerald-600 text-white">
+      <div className="bg-amber-600 text-white">
         <div className="max-w-7xl mx-auto px-6 py-3 text-center">
           <p className="text-sm sm:text-base font-medium">
             🎓 Professional Certification Programs - Enrollment Open for {new Date().getFullYear()} Batch
@@ -117,7 +117,7 @@ export default function AdultsAdmissionsPage() {
             <Card key={index} className="p-6">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-lg bg-emerald-600/10">
-                  <feature.icon className="h-6 w-6 text-emerald-600" />
+                  <feature.icon className="h-6 w-6 text-amber-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold">{feature.title}</h3>
@@ -170,7 +170,7 @@ export default function AdultsAdmissionsPage() {
                         {/* <Button variant="outline" asChild>
                           <Link href={`/programs/${program.id}`}>Learn More</Link>
                         </Button> */}
-                        <Button className="bg-emerald-600 hover:bg-emerald-700" asChild>
+                        <Button className="bg-amber-600 hover:bg-amber-700" asChild>
                           <Link href="/apply">Apply Now</Link>
                         </Button>
                       </div>
@@ -204,7 +204,7 @@ export default function AdultsAdmissionsPage() {
               },
             ].map((step) => (
               <Card key={step.step} className="p-6">
-                <div className="text-4xl font-bold text-emerald-600 mb-4">{step.step}</div>
+                <div className="text-4xl font-bold text-amber-600 mb-4">{step.step}</div>
                 <h3 className="font-semibold mb-2">{step.title}</h3>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </Card>

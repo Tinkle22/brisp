@@ -16,8 +16,21 @@ import NoticeBoard from "@/components/notice-board";
 import KidsPrograms from "@/components/kids-programs";
 import AnimatedShowcase from "@/components/AnimatedShowcase";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [downloadables, setDownloadables] = useState([]);
+
+  useEffect(() => {
+    const fetchDownloadables = async () => {
+      const response = await fetch('/api/downloadables');
+      const data = await response.json();
+      setDownloadables(data);
+    };
+
+    fetchDownloadables();
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -117,22 +130,20 @@ export default function Home() {
               <h2 className="text-xl font-semibold">Downloads</h2>
             </div>
             <div className="space-y-3">
-              {[
-                { name: "Academy Brochure 2024", size: "2.5 MB" },
-                { name: "Course Catalog", size: "1.8 MB" },
-                { name: "Fee Structure", size: "500 KB" },
-              ].map((file, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  className="w-full justify-between text-left font-normal transition-all duration-300 hover:bg-emerald-50"
-                >
-                  <span>{file.name}</span>
-                  <span className="text-sm text-muted-foreground">
-                    {file.size}
-                  </span>
-                </Button>
-              ))}
+              {downloadables
+                .filter(file => 
+                  ["Brochure", "Course Catalog", "Fee Structure"].includes(file.file_name)
+                )
+                .map((file, index) => (
+                  <Button
+                    key={index}
+                    variant="outline"
+                    className="w-full justify-between text-left font-normal transition-all duration-300 hover:bg-emerald-50"
+                    onClick={() => window.open(file.file_url, "_blank")}
+                  >
+                    <span>{file.file_name}</span>
+                  </Button>
+                ))}
             </div>
           </Card>
           {/* Campus Location */}

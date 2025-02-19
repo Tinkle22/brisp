@@ -100,7 +100,7 @@ export default function ComputerSciencePage() {
               ].map((item, index) => (
                 <Card key={index} className="p-4 flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-blue-600/10">
-                    <item.icon className="h-5 w-5 text-blue-600" />
+                    <item.icon className="h-5 w-5 text-amber-600" />
                   </div>
                   <span className="font-medium text-sm">{item.label}</span>
                 </Card>
@@ -139,7 +139,7 @@ export default function ComputerSciencePage() {
                   <div className="p-6 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className="p-3 rounded-lg bg-blue-600/10">
-                        <course.icon className="h-6 w-6 text-blue-600" />
+                        <course.icon className="h-6 w-6 text-amber-600" />
                       </div>
                       <div className="text-left">
                         <h3 className="font-semibold">{course.name}</h3>
@@ -166,7 +166,7 @@ export default function ComputerSciencePage() {
                           <p className="text-sm text-muted-foreground">{course.level}</p>
                         </div>
                       </div>
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700" asChild>
+                      <Button className="w-full bg-amber-600 hover:bg-amber-700" asChild>
                         <Link href={`/courses/${course.id}`}>Learn More</Link>
                       </Button>
                     </div>
@@ -184,7 +184,7 @@ export default function ComputerSciencePage() {
             <p className="text-muted-foreground mb-6">
               Join our Computer Science department and build your future in technology.
             </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
+            <Button size="lg" className="bg-amber-600 hover:bg-amber-700" asChild>
               <Link href="/apply">Apply Now</Link>
             </Button>
           </div>

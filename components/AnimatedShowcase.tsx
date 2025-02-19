@@ -116,17 +116,18 @@ export default function AnimatedShowcase() {
                     alt={`Slide ${currentIndex + 1}`}
                     className="w-full h-full object-cover rounded-xl"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col items-center justify-center">
                     <h3 className="text-white text-2xl font-bold">
                       {selectedReason.title}
                     </h3>
+                    <p className='text-amber-600'>Click for more</p>
                   </div>
                 </motion.div>
               </motion.div>
             </AnimatePresence>
 
             {/* Navigation Buttons */}
-            <button
+            {/* <button
               onClick={handlePrevious}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 z-10"
             >
@@ -137,7 +138,7 @@ export default function AnimatedShowcase() {
               className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 z-10"
             >
               <BsChevronRight className="w-6 h-6" />
-            </button>
+            </button> */}
 
             {/* Indicators */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
@@ -146,7 +147,7 @@ export default function AnimatedShowcase() {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? 'bg-background w-4' : 'bg-white/50'
+                    index === currentIndex ? 'bg-amber-600 w-4' : 'bg-white/50'
                   }`}
                 />
               ))}

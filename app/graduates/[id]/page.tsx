@@ -56,7 +56,7 @@ export default async function GraduateDetailsPage({
 
   return (
     <div className="container mx-auto p-6">
-      <Link href="/graduates" className="text-blue-600 underline mb-4 inline-block">
+      <Link href="/graduates" className="text-amber-600 underline mb-4 inline-block">
         ← Back to Graduates
       </Link>
       <div className="flex flex-col md:flex-row items-start gap-6">
@@ -86,7 +86,7 @@ export default async function GraduateDetailsPage({
             <GraduationCap className="w-4 h-4" /> {graduate.period_of_study}
           </p>
           <p className="mt-1 flex items-center gap-2">
-            <Star className="w-4 h-4 text-emerald-600" /> Final Score: {graduate.final_score}
+            <Star className="w-4 h-4 text-amber-600" /> Final Score: {graduate.final_score}
           </p>
           <p className="mt-1">Certificate Number: {graduate.certificate_number}</p>
           {graduate.certificate_file_url && (
@@ -94,7 +94,7 @@ export default async function GraduateDetailsPage({
               href={graduate.certificate_file_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-block text-blue-600 underline"
+              className="mt-2 inline-block text-amber-600 underline"
             >
               View Certificate
             </a>
@@ -118,7 +118,7 @@ export default async function GraduateDetailsPage({
                     href={project.project_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-2 inline-block text-blue-600 underline"
+                    className="mt-2 inline-block text-amber-600 underline"
                   >
                     View Project
                   </a>
@@ -143,7 +143,7 @@ export default async function GraduateDetailsPage({
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 underline ml-2"
+                  className="text-amber-600 underline ml-2"
                 >
                   {link.url}
                 </a>
