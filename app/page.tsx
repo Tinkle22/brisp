@@ -18,8 +18,13 @@ import AnimatedShowcase from "@/components/AnimatedShowcase";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+interface DownloadableFile {
+  file_name: string;
+  file_url: string;
+}
+
 export default function Home() {
-  const [downloadables, setDownloadables] = useState([]);
+  const [downloadables, setDownloadables] = useState<DownloadableFile[]>([]);
 
   useEffect(() => {
     const fetchDownloadables = async () => {
