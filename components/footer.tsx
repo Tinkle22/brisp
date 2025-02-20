@@ -24,8 +24,13 @@ export default function Footer() {
       >
         <div className="flex flex-col items-center justify-center space-y-4">
           <Link href="/" className="flex items-center space-x-2">
-            <GraduationCap className="h-8 w-8 text-emerald-600" />
-            <span className="font-bold text-xl">Academy</span>
+            <img
+              src="/logo.png"
+              alt="Brissp Academy Logo"
+              className='w-44 h-14'
+            />
+
+            
           </Link>
           <p className="text-sm text-muted-foreground text-center">
             Empowering minds through quality education and professional development.

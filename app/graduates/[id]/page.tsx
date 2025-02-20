@@ -55,7 +55,7 @@ export default async function GraduateDetailsPage({
   const graduate: GraduateDetails = await res.json();
 
   return (
-    <div className="container mx-auto p-6">
+    <div  className="container mx-auto p-6 border-solid  rounded-lg shadow-md">
       <Link href="/graduates" className="text-amber-600 underline mb-4 inline-block">
         ← Back to Graduates
       </Link>

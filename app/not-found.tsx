@@ -12,8 +12,8 @@ export default function NotFound() {
         {/* Logo */}
         <div className="flex justify-center mb-8">
           <div className="flex items-center gap-2">
-            <GraduationCap className="h-12 w-12 text-amber-600" />
-            <span className="text-2xl font-bold">Academy</span>
+      
+            <span className="text-2xl font-bold">Briisp Academy</span>
           </div>
         </div>
 
