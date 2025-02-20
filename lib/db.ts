@@ -2,11 +2,7 @@ import mysql from 'mysql2/promise';
 import fs from 'fs';
 import path from 'path';
 
-const sslCertPath = process.env.DATABASE_SSL_CERT;
 
-if (!sslCertPath) {
-  throw new Error("DATABASE_SSL_CERT environment variable is not defined.");
-}
 
 const pool = mysql.createPool({
   host: process.env.MYSQL_HOST,
@@ -14,7 +10,7 @@ const pool = mysql.createPool({
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   ssl: {
-    ca: fs.readFileSync(path.resolve(process.cwd(), sslCertPath)),
+    ca: fs.readFileSync(path.resolve(process.cwd(), process.env.DATABASE_SSL_CERT)),
   },
   waitForConnections: true,
   connectionLimit: 10,
